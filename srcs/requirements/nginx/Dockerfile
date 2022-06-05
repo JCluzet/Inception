@@ -1,8 +1,20 @@
 FROM debian:buster
 
-EXPOSE 8080
+#install nginx
+RUN apt update -y
+RUN apt install nginx -y
 
-RUN apt-get update \
-&& apt-get install systemd -y \
-&& apt-get install nginx -y \
-  
+#install systemctl to start nginx
+RUN apt-get install systemd -y
+
+#install curl
+RUN apt install curl -y
+
+#install VIM to edit nginx.conf
+RUN apt install vim -y
+
+
+EXPOSE 80
+
+#run nginx
+RUN systemctl enable nginx
