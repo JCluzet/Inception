@@ -66,13 +66,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/jo/data/wordpress'
+      device: '/Users/jcluzet/data/wordpress'
   mariadb_volum:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/jo/data/mariadb'
+      device: '/Users/jcluzet/data/mariadb'
 networks:
     inception:
       driver: bridge

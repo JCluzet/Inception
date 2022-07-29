@@ -21,10 +21,10 @@ if [ ! -e /var/www/wordpress/wp-config.php ]; then
     #                     --path='/var/www/wordpress' >> /log.txt
 fi
 
-echo "define( 'CONCATENATE_SCRIPTS', false );" >> /var/www/wordpress/wp-config.php
-echo "define( 'SCRIPT_DEBUG', true );" >> /var/www/wordpress/wp-config.php
-echo "define( 'WP_HOME', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
-echo "define( 'WP_SITEURL', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
+# echo "define( 'CONCATENATE_SCRIPTS', false );" >> /var/www/wordpress/wp-config.php
+# echo "define( 'SCRIPT_DEBUG', true );" >> /var/www/wordpress/wp-config.php
+# echo "define( 'WP_HOME', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
+# echo "define( 'WP_SITEURL', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
 
 # if /run/php folder does not exist, create it
 if [ ! -d /run/php ]; then

@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 17:40:17 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/29 02:01:52 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/07/29 03:31:22 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 #copy auto_config
 COPY conf/auto_config.sh auto_config.sh
-RUN mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
+# RUN mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
 ENTRYPOINT ["bash", "auto_config.sh"]
 
 
