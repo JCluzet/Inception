@@ -1,36 +1,73 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/25 17:40:17 by jcluzet           #+#    #+#              #
+#    Updated: 2022/07/29 02:01:52 by jcluzet          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# ==> Create a container from DEBIAN
 FROM debian:buster
 
-# update apt to get last version of packages
-RUN apt update -y 
+# ==> MAJ of apt-get, to get the last version of packages
+RUN apt-get update && apt-get upgrade -y
 
-# install wget 
-RUN apt install wget -y
+# ==> Install WGET to download the WordPress source code
+RUN apt-get -y install wget
 
-# color to remove
-RUN apt install zsh -y
-RUN apt install vim -y
-RUN apt install git -y
-# RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+# ==> Install PHP 7.3 and its dependencies
+RUN apt-get install -y php7.3\
+	php-fpm\
+	php-mysql\
+	mariadb-client 
+	# not sure for mariadb client
+
+# download wordpress 6.0 from wordpress.org into /var/www/ and extract it with tar command
+RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
+RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
+
+#copy of php configuration
+COPY	./conf/php.conf			/etc/php/7.3/fpm/pool.d/www.conf
+
+# give the right to the user to write in the directory
+RUN		chown -R root:root /var/www/wordpress
+
+#### -- WordPress CLI Part -->   https://www.linode.com/docs/guides/how-to-install-wordpress-using-wp-cli-on-debian-10/
+
+# install wp-cli to manage wordpress installation
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+# copy wp-cli to /usr/local/bin/wp and give the right to the user to write in the directory
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+#copy auto_config
+COPY conf/auto_config.sh auto_config.sh
+RUN mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
+ENTRYPOINT ["bash", "auto_config.sh"]
 
 
-# install apache2
-RUN apt install apache2 -y
 
-# install systemctl to start apache2
-RUN apt-get install systemd -y
 
-# start and enable apache2
-# RUN systemctl start apache2
-RUN systemctl enable apache2
+# # install systemctl to start apache2
+# RUN apt-get install systemd -y
 
-# tuto PHP https://www.rosehosting.com/blog/how-to-install-wordpress-with-nginx-on-debian-10/
+# # start and enable apache2
+# # RUN systemctl start apache2
+# RUN systemctl enable apache2
 
-# install php-fpm and enable it
-RUN apt install php php-fpm -y
+# # tuto PHP https://www.rosehosting.com/blog/how-to-install-wordpress-with-nginx-on-debian-10/
 
-# copy config file of php
-COPY conf/conf_php /etc/php/7.3/fpm/pool.d/www.conf 
-COPY conf/conf_phpini /etc/php/7.3/fpm/php.ini
+# # install php-fpm and enable it
+# RUN apt install php php-fpm -y
 
-#launch php
-RUN systemctl enable php7.3-fpm
+# # copy config file of php
+# COPY conf/conf_php /etc/php/7.3/fpm/pool.d/www.conf 
+# COPY conf/conf_phpini /etc/php/7.3/fpm/php.ini
+
+# #launch php
+# RUN systemctl enable php7.3-fpm
