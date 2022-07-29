@@ -14,18 +14,19 @@ endif
 all:
 ifeq (,$(wildcard ./srcs/requirements/tools/data_path.txt))
 	@bash srcs/requirements/tools/config.sh
-	@echo "Good! Use make config to configure another path"
-	@echo "Launching..."
-	@sleep 3
-	@clear
-endif
+	@echo "Good!   ps: make config to configure another path"
+	@echo "Use make again to launch"
+else
 ifeq (,$(wildcard $(mariadb_path)))
 	@sudo mkdir -p $(mariadb_path)
 	@sudo mkdir -p $(wordpress_path)
 	@sudo chmod 777 $(mariadb_path)
 	@sudo chmod 777 $(wordpress_path)
 endif
-	docker-compose -f $(PATH_YML) up -d --build
+	@echo "Starting Inception..."
+	@sleep 1
+	@docker-compose -f $(PATH_YML) up -d --build
+endif
 
 re: clean all
 
