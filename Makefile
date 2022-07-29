@@ -19,8 +19,8 @@ ifeq (,$(wildcard ./srcs/requirements/tools/data_path.txt))
 	@sleep 3
 	@clear
 endif
-	@sudo mkdir $(mariadb_path)
-	@sudo mkdir $(wordpress_path)
+	@[ -d $(mariadb_path) ] || sudo mkdir -p $(mariadb_path)
+	@[ -d $(wordpress_path) ] || sudo mkdir -p $(wordpress_path)
 	docker-compose -f $(PATH_YML) up -d --build
 
 re: clean all
