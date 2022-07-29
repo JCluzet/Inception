@@ -7,10 +7,6 @@ if [ ! -e /var/www/wordpress/wp-config.php ]; then
     					--dbuser=$SQL_USER \
     					--dbpass=$SQL_PASSWORD \
     					--dbhost=mariadb:3306 --path='/var/www/wordpress'
-    echo "DBNAME = $SQL_DATABASE"
-    echo "DBUSER = $SQL_USER"
-    echo "DBPASS = $SQL_PASSWORD"
-    echo "DBHOST = mariadb:3306"
     sleep 2
     # --allow-root
     # wp core install     --allow-root --url=$DOMAIN \

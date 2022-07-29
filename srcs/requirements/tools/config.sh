@@ -1,8 +1,15 @@
+# clear
 echo "=== INCEPTION CONFIGURATION ==="
 
 printf "\nEnter the path where to create your mariadb database and wordpress files"
 printf "\nExemple : /home/jcluzet/data\n"
 read path
+
+#if this repertory doesn't exist, create it and set the permissions
+if [ ! -d "$path" ]; then
+    echo "This repertory doesn't exist, please create it"
+    exit 1
+fi
 
 echo "$path" > srcs/requirements/tools/data_path.txt
 

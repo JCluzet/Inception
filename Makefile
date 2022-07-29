@@ -19,27 +19,32 @@ ifeq (,$(wildcard ./srcs/requirements/tools/data_path.txt))
 	@sleep 3
 	@clear
 endif
-	@[ -d $(mariadb_path) ] || sudo mkdir -p $(mariadb_path)
-	@[ -d $(wordpress_path) ] || sudo mkdir -p $(wordpress_path)
+ifeq (,$(wildcard $(mariadb_path)))
+	@sudo mkdir -p $(mariadb_path)
+	@sudo mkdir -p $(wordpress_path)
+	@sudo chmod 777 $(mariadb_path)
+	@sudo chmod 777 $(wordpress_path)
+endif
 	docker-compose -f $(PATH_YML) up -d --build
 
 re: clean all
 
 stop:
-	docker-compose -f $(PATH_YML) stop
+	@docker-compose -f $(PATH_YML) stop
 
 
 clean: stop
-	docker-compose -f $(PATH_YML) down -v
+	@docker-compose -f $(PATH_YML) down -v
 
 fclean: clean
-	docker system prune -af
+	# @docker system prune -af
+	docker volume rm $(docker volume ls -q)
 
-reset:
+reset: clean
 	@sudo rm -rf ${wordpress_path}
 	@sudo rm -rf ${mariadb_path}
 	@rm srcs/requirements/tools/data_path.txt
-	@printf "\nAll Database and WordPress files removed\n"
+	@printf "\nAll Database and WordPress files removed, path is reset\n"
 
 config:
 	@bash srcs/requirements/tools/config.sh
