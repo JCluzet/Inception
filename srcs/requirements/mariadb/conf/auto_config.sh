@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 17:39:14 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/29 14:56:28 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/07/29 23:36:50 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,6 @@ mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';"
 
 #reload the database
 mysql -e "FLUSH PRIVILEGES;"
-
-echo "MAriaDB is running"
-echo "DBNAME = ${SQL_DATABASE}"
-echo "DBUSER = ${SQL_USER}"
-echo "DBPASS = ${SQL_PASSWORD}"
 
 #shutdown
 mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown
