@@ -12,7 +12,7 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes: 
-    - mariadb:/var/lib/mysql
+      - mariadb:/var/lib/mysql:nocopy
     # - /Users/jo/data/mariadb:/var/lib/mysql
     restart: unless-stopped # "on-failure", container will be restarted 
     expose:
@@ -23,7 +23,7 @@ services:
   nginx:           # with TLSv.1.2
     container_name: nginx # name of the container
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/wordpress:nocopy
     networks:
       - inception
     depends_on:
@@ -40,7 +40,7 @@ services:
     container_name: wordpress
     env_file: .env
     volumes:
-    - wordpress:/var/www/wordpress
+    - wordpress:/var/www/wordpress:nocopy
     networks:
       - inception
     build: 
