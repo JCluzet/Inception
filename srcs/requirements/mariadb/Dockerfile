@@ -6,14 +6,13 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 17:39:33 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/29 03:29:34 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/07/29 15:00:59 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ==> Create a container from DEBIAN
 FROM debian:buster
 
-EXPOSE 3306
 # ==> MAJ of apt-get, to get the last version of packages
 RUN apt-get update && apt-get upgrade -y
 
@@ -30,3 +29,4 @@ COPY conf/auto_config.sh /auto_config.sh
 ENTRYPOINT ["bash", "auto_config.sh"]
 
 # ==> Expose the only port allowed by the subject (MySQL)
+EXPOSE 3306

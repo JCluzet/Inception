@@ -1,5 +1,5 @@
 #!bin/bash
-sleep 8
+sleep 10
 if [ ! -e /var/www/wordpress/wp-config.php ]; then
 # wp-config.php file
     wp config create	--allow-root \
@@ -7,6 +7,10 @@ if [ ! -e /var/www/wordpress/wp-config.php ]; then
     					--dbuser=$SQL_USER \
     					--dbpass=$SQL_PASSWORD \
     					--dbhost=mariadb:3306 --path='/var/www/wordpress'
+    echo "DBNAME = $SQL_DATABASE"
+    echo "DBUSER = $SQL_USER"
+    echo "DBPASS = $SQL_PASSWORD"
+    echo "DBHOST = mariadb:3306"
     sleep 2
     # --allow-root
     # wp core install     --allow-root --url=$DOMAIN \
@@ -25,6 +29,13 @@ fi
 # echo "define( 'SCRIPT_DEBUG', true );" >> /var/www/wordpress/wp-config.php
 # echo "define( 'WP_HOME', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
 # echo "define( 'WP_SITEURL', 'https://jcluzet.42.fr' );" >> /var/www/wordpress/wp-config.php
+
+# echo "define( 'WP_DEBUG', true);" >> /var/www/wordpress/wp-config.php
+# echo "define( 'WP_DEBUG_LOG', true);" >> /var/www/wordpress/wp-config.php
+# echo "define( 'WP_DEBUG_DISPLAY', false);" >> /var/www/wordpress/wp-config.php
+# echo "define('WP_ALLOW_REPAIR', true);" >> /var/www/wordpress/wp-config.php
+
+	
 
 # if /run/php folder does not exist, create it
 if [ ! -d /run/php ]; then
