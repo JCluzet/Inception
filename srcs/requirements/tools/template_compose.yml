@@ -5,16 +5,15 @@ version: '3'
 services:
   mariadb:
     container_name: mariadb
+    volumes: 
+      - mariadb:/var/lib/mysql:nocopy
     networks:
       - inception
     build: 
       context: requirements/mariadb
       dockerfile: Dockerfile
     env_file: .env
-    volumes: 
-      - mariadb:/var/lib/mysql:nocopy
-    # - /Users/jo/data/mariadb:/var/lib/mysql
-    restart: unless-stopped # "on-failure", container will be restarted 
+    restart: on-failure # "on-failure", container will be restarted 
     expose:
       - "3306"
 
@@ -34,7 +33,7 @@ services:
     env_file: .env
     ports:
       - "443:443"
-    restart: on-failure # "on-failure", container will be restarted 
+    restart: on-failure
 
   wordpress:
     container_name: wordpress
@@ -48,7 +47,7 @@ services:
       dockerfile: Dockerfile
     depends_on:    # wordpress will be started after mariadb
       - mariadb
-    restart: unless-stopped # "on-failure", container will be restarted 
+    restart: on-failure
     expose: 
       - "9000"
 

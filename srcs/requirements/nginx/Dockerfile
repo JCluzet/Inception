@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 17:40:07 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/29 00:28:04 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/08/01 01:04:02 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,6 @@ RUN apt-get update && apt-get upgrade -y
 
 # ==> Install NGinx server 
 RUN apt install nginx -y
-
-# #install curl
-# RUN apt install curl -y
-
-# #install VIM to edit nginx.conf
-# RUN apt install vim -y
-
-#install systemd to launch nginx
-# RUN apt-get install systemd -y
 
 # ==> Install OpenSSL to generate a self-signed certificate
 RUN apt-get install openssl -y
