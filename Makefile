@@ -20,8 +20,8 @@ else
 ifeq (,$(wildcard $(mariadb_path)))
 	@sudo mkdir -p $(mariadb_path)
 	@sudo mkdir -p $(wordpress_path)
-	# @sudo chmod 777 $(mariadb_path)
-	# @sudo chmod 777 $(wordpress_path)
+	@sudo chmod 777 $(mariadb_path)
+	@sudo chmod 777 $(wordpress_path)
 endif
 	@echo "Starting Inception..."
 	@sleep 1
@@ -39,7 +39,6 @@ clean: stop
 
 fclean: clean
 	@docker system prune -af
-	docker volume rm $(docker volume ls -q)
 
 reset: clean
 	@sudo rm -rf ${wordpress_path}
