@@ -3,18 +3,11 @@ sleep 10
 if [ ! -e /var/www/wordpress/wp-config.php ]; then
     wp config create	--allow-root --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD \
     					--dbhost=mariadb:3306 --path='/var/www/wordpress'
+
     sleep 2
-    # --allow-root
-    # wp core install     --allow-root --url=$DOMAIN \
-    # 					--title=$WP_TITLE \
-    # 					--admin_user=$WP_ADMIN \
-    #                     --admin_password=$WP_ADMINPASS \
-    #                     --admin_email=$WP_EMAIL1 \
-    #                     --path='/var/www/wordpress'
-    # wp user create      --allow-root $WP_USER $WP_EMAIL2 \
-    # 					--user_pass=$WP_USERPASS \
-    # 					--role=author\
-    #                     --path='/var/www/wordpress' >> /log.txt
+
+    wp core install     --allow-root --url=$DOMAIN_NAME --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL --title=$SITE_TITLE --path='/var/www/wordpress'
+    wp user create      --allow-root --role=author $USER1_LOGIN $USER1_MAIL --user_pass=$USER1_PASS --path='/var/www/wordpress' >> /log.txt
 fi
 
 # echo "define( 'CONCATENATE_SCRIPTS', false );" >> /var/www/wordpress/wp-config.php
