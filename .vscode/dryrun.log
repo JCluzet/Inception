@@ -1,7 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/jo/Desktop/Inception'
-echo "Starting Inception..."
-sleep 1
-docker-compose -f ./srcs/docker-compose.yml up -d --build
-make: Leaving directory `/Users/jo/Desktop/Inception'
- 
