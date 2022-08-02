@@ -6,7 +6,7 @@ services:
   mariadb:
     container_name: mariadb
     volumes: 
-      - mariadb:/var/lib/mysql:nocopy
+      - mariadb:/var/lib/mysql
     networks:
       - inception
     build: 
@@ -22,7 +22,7 @@ services:
   nginx:           # with TLSv.1.2
     container_name: nginx # name of the container
     volumes:
-      - wordpress:/var/www/wordpress:nocopy
+      - wordpress:/var/www/wordpress
     networks:
       - inception
     depends_on:
@@ -39,7 +39,7 @@ services:
     container_name: wordpress
     env_file: .env
     volumes:
-    - wordpress:/var/www/wordpress:nocopy
+    - wordpress:/var/www/wordpress
     networks:
       - inception
     build: 
@@ -60,13 +60,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: 'pathtodata/wordpress'
+      device: 'pathtodata/wordpress1'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: 'pathtodata/mariadb'
+      device: 'pathtodata/mariadb1'
 
 
 
