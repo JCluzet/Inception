@@ -31,16 +31,16 @@ endif
 re: clean all
 
 stop:
-	@docker-compose -f $(PATH_YML) stop
+	@sudo docker-compose -f $(PATH_YML) stop
 
 
 clean: stop
-	@docker-compose -f $(PATH_YML) down -v
+	@sudo docker-compose -f $(PATH_YML) down -v
 
 fclean: clean
 	@sudo rm -rf $(wordpress_path)
 	@sudo rm -rf $(mariadb_path)
-	@docker system prune -af
+	@sudo docker system prune -af
 
 reset: clean
 	@rm srcs/requirements/tools/data_path.txt
