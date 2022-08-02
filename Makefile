@@ -25,7 +25,7 @@ ifeq (,$(wildcard $(mariadb_path)))
 endif
 	@echo "Starting Inception..."
 	@sleep 1
-	@docker-compose -f $(PATH_YML) up -d --build
+	@sudo docker-compose -f $(PATH_YML) up -d --build
 endif
 
 re: clean all
@@ -38,13 +38,13 @@ clean: stop
 	@docker-compose -f $(PATH_YML) down -v
 
 fclean: clean
+	@sudo rm -rf $(wordpress_path)
+	@sudo rm -rf $(mariadb_path)
 	@docker system prune -af
 
 reset: clean
-	@sudo rm -rf ${wordpress_path}
-	@sudo rm -rf ${mariadb_path}
 	@rm srcs/requirements/tools/data_path.txt
-	@printf "\nAll Database and WordPress files removed, path is reset\n"
+	@printf "\nPath is reset\n"
 
 config:
 	@bash srcs/requirements/tools/config.sh

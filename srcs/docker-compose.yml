@@ -5,16 +5,15 @@ version: '3'
 services:
   mariadb:
     container_name: mariadb
+    volumes: 
+      - mariadb:/var/lib/mysql
     networks:
       - inception
     build: 
       context: requirements/mariadb
       dockerfile: Dockerfile
     env_file: .env
-    volumes: 
-      - mariadb:/var/lib/mysql:nocopy
-    # - /Users/jo/data/mariadb:/var/lib/mysql
-    restart: unless-stopped # "on-failure", container will be restarted 
+    restart: on-failure # "on-failure", container will be restarted 
     expose:
       - "3306"
 
@@ -34,13 +33,13 @@ services:
     env_file: .env
     ports:
       - "443:443"
-    restart: on-failure # "on-failure", container will be restarted 
+    restart: on-failure
 
   wordpress:
     container_name: wordpress
     env_file: .env
     volumes:
-    - wordpress:/var/www/wordpress:nocopy
+    - wordpress:/var/www/wordpress
     networks:
       - inception
     build: 
@@ -48,7 +47,7 @@ services:
       dockerfile: Dockerfile
     depends_on:    # wordpress will be started after mariadb
       - mariadb
-    restart: on-failure # "on-failure", container will be restarted 
+    restart: on-failure
     expose: 
       - "9000"
 
@@ -61,13 +60,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/jo/data/wordpress'
+      device: '/Users/jo/data/wordpress1'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/jo/data/mariadb'
+      device: '/Users/jo/data/mariadb1'
 
 
 
