@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/25 17:40:17 by jcluzet           #+#    #+#              #
-#    Updated: 2022/08/01 01:04:22 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/08/03 04:24:22 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ RUN apt-get install -y php7.3\
 	# not sure for mariadb client
 
 # download wordpress 6.0 from wordpress.org into /var/www/ and extract it with tar command
-RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
-RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
+RUN wget https://wordpress.org/wordpress-6.0.tar.gz -P /var/www
+RUN cd /var/www && tar -xzf wordpress-6.0.tar.gz && rm wordpress-6.0.tar.gz
 
 #copy of php configuration
 COPY	./conf/php.conf			/etc/php/7.3/fpm/pool.d/www.conf
