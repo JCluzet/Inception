@@ -14,8 +14,8 @@ endif
 all:
 ifeq (,$(wildcard ./srcs/requirements/tools/data_path.txt))
 	@bash srcs/requirements/tools/config.sh
-	@echo "Good!   ps: make config to configure another path"
-	@echo "Use make again to launch"
+	@echo "Good!"
+	@echo "Use make to launch"
 else
 ifeq (,$(wildcard $(mariadb_path)))
 	@sudo mkdir -p $(mariadb_path)
