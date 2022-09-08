@@ -14,7 +14,7 @@ Inception is a 42 project consists in recreating an enterprise infrastructure us
 7. Comprendre les volumes de **Compose**
 8. Finaliser le projet
 
-# 1. Comprendre Docker ****:**
+# 1. Comprendre Docker **:**
 
 📌 L’avantage de Docker est clair, il **résout** l’un des plus **gros problèmes des développeurs**:
 
