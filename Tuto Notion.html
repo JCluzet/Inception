@@ -1,0 +1,1184 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>42 Inception TIPS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="82a4111e-431e-4415-9d38-249da9eab87c" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-1.2.1&amp;q=80&amp;cs=tinysrgb&amp;fm=jpg&amp;crop=entropy" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🌀</span></div><h1 class="page-title">42 Inception TIPS</h1><table class="properties"><tbody><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Lesson Date</th><td><time>@July 12, 2022</time></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Status</th><td><span class="selected-value select-value-color-green">Complete</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Type</th><td><span class="selected-value select-value-color-purple">Lesson</span></td></tr></tbody></table></header><div class="page-body"><figure id="8ae4ad64-9baa-4b1d-a41c-3e4a642cf6b5"><div class="source">https://www.github.com/jcluzet/Inception</div></figure><figure id="5bbaa417-a995-492a-a009-aff39f1bfb78" class="image"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/docker-compose.png"><img style="width:1280px" src="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/docker-compose.png"/></a></figure><p id="f28d9e1d-8a05-4b9b-8561-b3bc67c5af4e" class="">
+</p><hr id="21f32957-48b4-4680-a1be-5de32cf430de"/><h1 id="9dd26110-43ce-477a-9fe2-c8a78e0440a0" class="">Objectif d’apprentissage</h1><p id="9ef39dd0-077f-4ac3-aa88-a1886f2f5a0f" class="">
+</p><ol type="1" id="0170f62a-af65-4d42-b3dd-509e4de1514b" class="block-color-gray numbered-list" start="1"><li>Comprendre <strong>Docker</strong> et <strong>Compose</strong>.</li></ol><ol type="1" id="a573bdd5-9e34-4063-ae38-08d70a05a89e" class="numbered-list" start="2"><li><mark class="highlight-gray">Découvrir les différents points du </mark><strong><mark class="highlight-gray">sujet</mark></strong><mark class="highlight-gray"> d’Inception.</mark></li></ol><ol type="1" id="787ba2a7-7fb9-48d8-af54-142399427400" class="numbered-list" start="3"><li><mark class="highlight-gray">Mettre en place le container </mark><strong><mark class="highlight-gray">NGINX</mark></strong></li></ol><ol type="1" id="23b3cd49-f9f7-4d98-b247-92295c29c30f" class="numbered-list" start="4"><li><mark class="highlight-gray">Mettre en place le container </mark><strong><mark class="highlight-gray">MariaDB</mark></strong></li></ol><ol type="1" id="cf15ff7d-4d2b-478a-9c2a-ce17d33b74e4" class="numbered-list" start="5"><li><mark class="highlight-gray">Mettre en place le container </mark><strong><mark class="highlight-gray">WordPress</mark></strong></li></ol><ol type="1" id="248d5541-7443-44be-9e0f-47a4bf0d14da" class="numbered-list" start="6"><li><mark class="highlight-gray">Relier les containers avec </mark><strong><mark class="highlight-gray">Compose</mark></strong></li></ol><ol type="1" id="53b7e6f0-e217-40a5-aa6e-a674e0708ecf" class="numbered-list" start="7"><li><mark class="highlight-gray">Comprendre les volumes de </mark><strong><mark class="highlight-gray">Compose</mark></strong></li></ol><ol type="1" id="4fd15b02-b01f-4bba-be84-c7be8ded2b80" class="numbered-list" start="8"><li><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Finaliser</mark></span><mark class="highlight-gray"> le projet</mark></li></ol><p id="87d91f06-e4b0-4bf9-8301-7944d2f0c19a" class="">
+</p><h1 id="ad5c7267-154a-4336-a667-8530a9c68784" class="">1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1><p id="af7e2227-74a7-49df-89a7-ba4a82b4c7a5" class="">
+</p><p id="4ef0a106-88e0-4e02-a5a7-f050c4c1e2d6" class="">📌 L’avantage de Docker est clair, il <mark class="highlight-teal"><strong>résout </strong></mark>l’un des plus <strong>gros problèmes des développeurs</strong>:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f57d4249-3f4d-495d-a1b0-b23b6a585733"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%"><mark class="highlight-gray_background">Se retrouver à créer un super programme sur son ordinateur, et se rendre compte qu’il ne fonctionne que sur notre propre ordinateur. Pour l’utiliser ailleurs il va falloir installer les dépendances requises 🤯</mark></div></figure><p id="357a81e8-c931-4e98-9ac7-13900c54dac4" class="">
+</p><p id="e4e26c7c-8fd8-4e6d-adc0-e68c17bc3f5a" class="block-color-gray">Souvenez vous ce <strong><mark class="highlight-teal">super programme</mark></strong> que vous aviez trouvé sur <strong>Github</strong>, vous l’installez comme prévu par le tutoriel du ReadMe 📄, mais l’installation <strong><mark class="highlight-red">crash</mark></strong> indiquant “<strong><em>You have missing dependencies</em></strong>”, ou encore “<em><strong>This version of this file is not compatible with your OS</strong></em>” 😣</p><p id="802791ff-9675-49cf-8249-2c7e767ca201" class="">
+</p><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="c09cf828-3a6e-4f0e-b14f-0253ce48d955"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Alors oui, vous pouvez rester un <mark class="highlight-teal"><strong>bon développeur</strong></mark> et proposer un super <strong>script qui installera ces dépendances</strong>, mais vous ne pouvez pas prévoir que l’utilisateur soit sur Mac, Linux ou encore qu’il ait une version d’OS si vieille que celle ci ne connait même pas vos dépendances!</div></figure><p id="26317d09-ec95-400d-8bfd-6b845eaca666" class="">
+</p><ul id="e7d86032-c876-4615-a648-ffbaf4995068" class="toggle"><li><details open=""><summary>⚙️ Les types de problèmes que corrige Docker</summary><ul id="4ce4a290-f093-4b9f-9559-9994e7ad73b1" class="bulleted-list"><li style="list-style-type:disc">Une dépendance n’est pas compatible avec votre version de logiciel 😅</li></ul><ul id="e7e470be-bea0-476c-8ab2-237221d62dab" class="bulleted-list"><li style="list-style-type:disc">Vous possédez déjà la dépendance mais dans une version différente 😑</li></ul><ul id="14ba5b5f-e261-484f-955c-f1e557a54fd2" class="bulleted-list"><li style="list-style-type:disc">Votre dépendance n’existe pas sur votre OS 😓</li></ul><ul id="9c1fa34f-b164-4983-bd81-ee04313a6b68" class="bulleted-list"><li style="list-style-type:disc">Votre dépendance crash au lancement 😮‍💨</li></ul><ul id="f69e62e6-c56a-4698-8de5-a287a9403616" class="bulleted-list"><li style="list-style-type:disc">etc…</li></ul></details></li></ul><p id="26120a4e-0878-42b8-9b79-e6cb27a82cfa" class="">
+</p><blockquote id="98e372e6-248d-4c4c-9edb-2870c2a889c3" class="">Passer 4 heures sur du <strong><mark class="highlight-red"><a href="https://www.larousse.fr/dictionnaires/francais/d%C3%A9boguer/21835#:~:text=un%20programme%20informatique.-,d%C3%A9boguer%20v.t.,erreurs%20d&#x27;un%20programme%20informatique.">débug</a></mark></strong> d’un logiciel qui n’est pas le notre et se rendre compte que nous n’y arriverons pas, a tendance à rendre <span style="border-bottom:0.05em solid">fou</span> 🤯</blockquote><p id="99e88a0e-59e7-4e07-9cdc-b23e55d2966b" class="">
+</p><p id="2a04e7c0-82b5-4024-beb0-200d3843a5d6" class="">C’est ce qu’il a du arriver à <a href="https://fr.wikipedia.org/wiki/Solomon_Hykes"><strong>Solomon Hykes</strong></a>,<strong> </strong>un <span style="border-bottom:0.05em solid">franco-américain</span> qui a finit par se demander s’il était possible de trouver une <mark class="highlight-teal"><strong>solution</strong></mark> à ce genre de problème.</p><p id="4c295a3f-1f9a-40a6-8a4c-40d174bc9425" class="">En réponse à cela, il sort <mark class="highlight-blue"><strong>Docker</strong></mark><strong> </strong>le <span style="border-bottom:0.05em solid"><strong>20 mars 2013</strong></span>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6be3c846-582e-4025-9077-73a5b81baa43"><div style="font-size:1.5em"><span class="icon">🎯</span></div><div style="width:100%">Rappel du Wiki de Docker<strong>: Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé.  </strong></div></figure><p id="51d5d26d-5b83-407b-af4f-da8ff2932bae" class="">
+</p><ul id="0b296b77-17ef-4d0e-bac0-998f79a7eb4b" class="toggle"><li><details open=""><summary>⚙️ L’Histoire de Docker</summary><ul id="10699edb-2c00-49ea-8306-506d2d96ca5c" class="bulleted-list"><li style="list-style-type:disc">Docker à été développé pour un projet interne de <em><strong>dotCloud</strong></em>, une entreprise <span style="border-bottom:0.05em solid">française</span> 😏 proposant une <a href="https://fr.wikipedia.org/wiki/Plate-forme_en_tant_que_service">plate-forme en tant que service</a>.</li></ul><ul id="199a6769-4a29-42d9-8f1b-02ad2df957c9" class="bulleted-list"><li style="list-style-type:disc">Docker est une évolution basée sur les technologies propriétaires de dotCloud, elles-mêmes construites sur des projets open source 🔓</li></ul><ul id="a0021b76-4a83-4235-97fb-af9d172fa5e1" class="bulleted-list"><li style="list-style-type:disc">Docker est distribué en tant que projet <span style="border-bottom:0.05em solid"><em>open source </em></span><em>❤️</em> à partir de mars 2013.</li></ul><ul id="dd614f29-4ee0-4fc3-a31f-e74d916571e4" class="bulleted-list"><li style="list-style-type:disc">Il s&#x27;agit actuellement du moteur de conteneurisation le plus utilisé 👨‍💻</li></ul><ul id="4e7dcf4f-e3be-4f9a-846a-81a37e8bb487" class="bulleted-list"><li style="list-style-type:disc">En novembre 2019, la société Docker revend son produit <em>Docker Enterprise</em> à <a href="https://www.mirantis.com/?utm_source=google&amp;utm_source=google&amp;utm_medium=paidsearch&amp;utm_medium=paidsearch&amp;utm_campaign=amer-en-brand&amp;utm_campaign=16574635611&amp;utm_content=website&amp;utm_content=604023926849&amp;utm_term=mirantis&amp;utm_term=mirantis&amp;utm_adgroup=131852988902&amp;utm_region=emea&amp;utm_focus=brand&amp;gclid=CjwKCAjw2rmWBhB4EiwAiJ0mtdDxiuDhEe4WvIQN4mH83uZFZPD1xJiaRT9V8UUd4Oe2VxbvA0LvzRoC5zIQAvD_BwE">Mirantis</a>, et effectue une levée de fonds de près de <span style="border-bottom:0.05em solid"><em><strong>35 millions</strong></em></span><em><strong> de dollars </strong></em>🥵</li></ul></details></li></ul><p id="3b667a02-a174-4323-b0ec-957895f597eb" class="">
+</p><hr id="ce2f4186-279b-4b35-ac97-8dd57deb3adb"/><p id="9e64d7c2-102a-47c9-bcf2-c9b75087e7f2" class="">
+</p><p id="48163f26-26e4-404c-8e0d-17000c527527" class="">Tout ça semble tout beau mais en fait, si ça existe déjà avec les <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">VM</a>,</p><h3 id="905da8f0-11f0-4aad-833d-c404c3a23972" class="">Pourquoi les développeurs utilisent Docker ? 🤔</h3><p id="77b6a2b1-6c8d-4f14-b60f-9fba034dfedb" class="">
+</p><p id="57b37b9d-8433-4540-aede-b624824ea6bb" class="">Le grand avantage de <strong><mark class="highlight-blue">Docker</mark></strong> est la possibilité de modéliser chaque conteneur sous la forme d&#x27;une image que l&#x27;on peut stocker localement.</p><p id="29d77c3a-7a28-4680-8bca-6fdbff7dd0ce" class="">
+</p><p id="867d0a0a-fba8-44b6-9b06-9fcf300c00b0" class="">🔎 Un <span style="border-bottom:0.05em solid"><strong>conteneur</strong></span> est une machine virtuelle sans noyau.</p><p id="a9abf2ad-9726-4fa4-a948-8ae327264520" class="block-color-purple_background">📌 Ce que j’appelle <span style="border-bottom:0.05em solid"><strong>noyau</strong></span> est tout l’ensemble du système permettant à la machine virtuelle de fonctionner, l’OS, le coté graphique, réseau, etc…</p><p id="4850f7a1-ac42-4c2a-94a0-75d378372046" class="">🔎 En d’autres termes, un conteneur ne contient <span style="border-bottom:0.05em solid"><strong>que l’application</strong></span> <em>et</em> <strong><span style="border-bottom:0.05em solid">les dépendances de l’application</span></strong>.</p><p id="426db8ae-4451-4ef7-ab33-612c3387252d" class="">
+</p><h3 id="68ad5697-f533-4877-ad6e-155e0f6c2b77" class=""><span style="border-bottom:0.05em solid">Docker Hub:</span></h3><p id="31d39bf5-40cb-41be-8af7-be85a2c11af7" class="">
+</p><p id="568aedab-4ddc-45a4-8c61-abe7a3f7ac07" class="block-color-yellow_background"><strong><mark class="highlight-blue">Docker</mark></strong> met a disposition une sorte d’App Store, contenant des images (conteneur) de millions de personnes, simplifiant encore plus son usage 👍</p><p id="3a127352-54c6-4504-8bc5-54c893f09dca" class="">
+</p><p id="c01334ab-d605-4dea-bee2-4e1e5ed88d1d" class="block-color-gray">Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.</p><p id="9f28d804-116e-41dc-9333-a4ad0eefa694" class="block-color-gray">L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?</p><p id="ddac9814-c21f-4947-9d4a-a0a31f3a7ff7" class="">
+</p><p id="a31a3d5f-da63-412c-9426-d3a3b98bd9fa" class="block-color-gray_background">🤔 Nous aurions besoin du container Docker qui installe de lui même nginx. </p><p id="dda88a43-a815-429d-bab8-fe36e16f8877" class="">😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par</mark><mark class="highlight-gray_background"><a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a></mark><mark class="highlight-gray_background"><strong> 🥳</strong></mark><mark class="highlight-gray_background"> </mark></p><p id="abb0363f-9d5c-45d4-a6e9-29ec87aec13a" class="">
+</p><p id="548a7e5f-9ca6-4349-ab7e-d4ceff8c293f" class="">Regardons un exemple de ce à quoi pourrais ressembler une image nginx:</p><p id="0e2a0bb2-fdf4-49a0-a497-b872f8ea183f" class="">
+</p><pre id="cf11659b-71a9-4988-8366-7f0512b97ef2" class="code"><code>FROM		alpine:3.12
+
+RUN			apk update &amp;&amp; apk upgrade &amp;&amp; apk add	\
+											openssl			\
+											nginx			\
+											curl			\
+											vim				\
+											sudo
+
+RUN			rm -f /etc/nginx/nginx.conf
+
+COPY		./config/nginx.conf /etc/nginx/nginx.conf
+COPY		scripts/setup_nginx.sh /setup_nginx.sh
+
+RUN			chmod -R +x /setup_nginx.sh
+
+EXPOSE		443
+
+ENTRYPOINT	[&quot;sh&quot;, &quot;setup_nginx.sh&quot;]</code></pre><p id="bc3edcac-2d13-4e45-817e-0d862f9e2adc" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3a306a8f-d497-41b0-99a0-f4d122eb8026"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Ce fichier est un <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, c’est le nom du fichier principal de vos images <mark class="highlight-blue"><strong>Docker</strong></mark>.                          Qui dit <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, dit nouveau language de programmation, mais ne fuyez pas, il s’agit de connaitre ces quelques mots-clefs.</div></figure><p id="0cecca5c-fcb6-4390-ba27-9c94c47bdf86" class="">
+</p><h2 id="e512b763-8384-4d32-b65e-0412bad98d50" class="">Quelques mots-clefs <span style="border-bottom:0.05em solid">Dockerfile</span>:</h2><h1 id="adbe4165-4251-40ff-b098-48493014b01a" class=""><details open=""><summary><mark class="highlight-blue">FROM</mark></summary></details></h1><div class="indented"><p id="aa0ea21f-3a9e-4971-8965-34fc5590e9ce" class="">Permet d’indiquer à Docker sous quel OS doit tourner votre machine virtuelle.</p><p id="183f809a-81da-41cd-9105-d72fb1989f49" class="">C’est le <span style="border-bottom:0.05em solid">premier</span> mot clef de votre Dockerfile et celui ci est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</p><p id="95810f54-303e-44c5-b7aa-a9970bbea50e" class="">Les plus courants sont <em>debian:buster</em> pour <a href="https://www.debian.org/index.fr.html">Debian</a> ou <em>alpine:x:xx</em> pour <span style="border-bottom:0.05em solid">Linux</span>.</p><p id="143cfdd9-d2e0-481e-8e2d-6124b997214f" class="">
+</p></div><h1 id="bc13639a-e568-4aa2-bf92-348d311befe6" class=""><details open=""><summary><mark class="highlight-blue">RUN</mark></summary></details></h1><div class="indented"><p id="f3815584-3ae4-4fed-842e-2bde5453e1f0" class="">Permet de lancer une commande sur votre machine virtuelle</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a341941a-4024-4452-af60-483d94687710"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">L’équivalent de se connecter en ssh, puis de taper une commande bash, comme :                                                                  <code>echo “Hello World!”,</code> qui affichera…. </div></figure><p id="bb0dabde-0861-412b-97e8-f76d3feccd48" class="">En général, les premiers <strong><mark class="highlight-blue">RUN</mark></strong> fournit dans le Dockerfile consistent à mettre à jour les ressources de votre VM, comme apk, ou encore d’ajouter les utilitaires basiques comme vim, curl ou sudo. </p></div><h1 id="ea3ace52-2419-4e88-a844-b66f36b1275c" class=""><details open=""><summary><mark class="highlight-blue">COPY</mark></summary></details></h1><div class="indented"><p id="850131af-9a60-4bea-a74b-533645e3b868" class="">Vous l’avez ! Cela permet en effet de copier un fichier.</p><blockquote id="ee4efffd-a936-4e40-8fb6-277db7fae0c1" class="">Le copier? À partir d’ou ?</blockquote><p id="e5b44d63-8361-4965-b8ab-516b6ae492f7" class="">Vous indiquez simplement ou se trouve votre fichier à copier à partir du répertoire ou se trouve votre Dockerfile, puis la ou vous souhaitez le copier dans votre machine virtuelle.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a98e7289-ef72-4760-86e6-ce411595d85a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une image docker c’est un dossier, il contient obligatoirement votre Dockerfile à la racine du dossier mais peut aussi contenir un tas d’autres fichiers pour ensuite pouvoir les copier directement dans votre VM.</div></figure></div><h1 id="fbbbb38f-0dc3-4e61-8e98-f72569503511" class=""><details open=""><summary><strong><mark class="highlight-blue">EXPOSE</mark></strong></summary></details></h1><div class="indented"><p id="3deb7ae6-8254-468a-84b8-492db562de91" class="">Ici, c’est une question de réseau 📡</p><p id="9467a462-6835-496c-b64e-0e5e6f64a560" class="">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> informe Docker que le conteneur écoute sur les ports réseau spécifiés au moment de l&#x27;exécution. <mark class="highlight-blue"><strong>EXPOSE</strong></mark> ne rend pas les ports du conteneur accessibles à l&#x27;hôte.</p><p id="f3af0eeb-83cb-4677-b475-c3c77340430f" class="">Attendez ! Quoi ? Le conteneur écoute sur le port réseau et n&#x27;est pas accessible à l&#x27;hôte ? </p><p id="af1af630-f080-423e-99b6-f56b879e2aaa" class="">Qu&#x27;est-ce que cela signifie ? 😣</p><p id="5b7e56ba-1eee-4d7b-a268-d3815ad5bd6a" class="">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> expose le port spécifié et le rend disponible uniquement pour la communication entre conteneurs. Comprenons cela à l&#x27;aide d&#x27;un exemple.</p><p id="199a7543-ebd8-43e1-9664-97a532ff9487" class="">Disons que nous avons deux conteneurs, une application wordpress et un serveur mariadb. Notre application wordpress a besoin de communiquer avec le serveur mariadb pour plusieurs raisons.</p><p id="98d0264f-f671-46da-9630-7e918aa15fa0" class="">
+</p><p id="438e9a21-3454-4a3f-a08f-252f4dcfa0b7" class="">Pour que l&#x27;application WordPress puisse parler au serveur MariaDB, le conteneur WordPress doit exposer le port. Jetez un œil au Dockerfile de l&#x27;image officielle de wordpress et vous verrez une ligne disant <mark class="highlight-blue"><strong>EXPOSE</strong></mark> <mark class="highlight-blue"><strong>3306</strong></mark>. C&#x27;est ce qui aide les deux conteneurs à communiquer l&#x27;un avec l&#x27;autre.</p><p id="4dbaccab-0114-4b80-86c1-0a6706d443c4" class="">Ainsi, lorsque votre conteneur WordPress essaie de se connecter au port <mark class="highlight-blue"><strong>3306</strong></mark> du conteneur MariaDB, c&#x27;est l&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> qui rend cela possible.</p><p id="6a458cca-8330-4bca-b791-2c2ff3934900" class="">Note : Pour que le serveur WordPress puisse communiquer avec le conteneur MariaDB, il est important que les deux conteneurs soient exécutés dans le même réseau docker.</p></div><h1 id="6091ab9f-51a4-47c9-8da8-b3e0595d6da9" class=""><details open=""><summary><strong><mark class="highlight-blue">ENTRYPOINT</mark></strong></summary></details></h1><div class="indented"><p id="dc93ead4-8ee3-4dc3-85a1-12b18c8ef1d2" class="">Youpi ! Votre container semble prêt à démarrer. </p><p id="634077f6-cde3-43b9-9d7a-21ce9a0a4d01" class="">Cependant il serait surement plus judicieux de demander au container de lancer une certaine commande au lancement de celui-ci.</p><p id="e9433a82-655b-49b0-bbab-471808181efc" class="">C’est ce que permet de faire le mot-clef <mark class="highlight-blue"><strong>ENTRYPOINT</strong></mark> !</p><p id="6568e2be-23cd-4c4e-b902-2a57e64ca433" class="">Il suffit d’indiquer votre commande, argument par argument, dans le format suivant :</p><p id="c08e4199-43cd-4179-9347-f7edde72f2af" class="">
+</p><blockquote id="1a2e50f6-d9e0-4105-816f-245a5a44d6af" class=""><strong>ENTRYPOINT</strong> [ “bash” , ”-c”,  “&quot;$(curl <a href="https://grademe.fr/">https://grademe.fr</a>)&quot;” ]</blockquote><p id="c6cbcb2c-2529-424d-9d32-24a4a7ddb30c" class="">
+</p><p id="a41b7672-5192-4bff-9014-c03b52880aea" class="">
+</p><p id="2e3c6147-8aa4-4bc5-b88b-07ab7759b122" class="">
+</p><p id="b535320f-ab32-4c55-996f-86c557de5329" class="">
+</p></div><p id="9acddbc4-6e4e-406c-857f-8e73971cff2b" class="">
+</p><p id="284c544e-9357-4b31-bc48-413a079bb2bd" class=""><a href="https://www.nicelydev.com/docker/mots-cles-supplementaires-dockerfile#:~:text=Le%20mot%2Dcl%C3%A9%20EXPOSE%20permet,utiliser%20l&#x27;option%20%2Dp%20."><strong>Ici</strong></a> un site détaillant les différents types de mots-clefs utilisable dans Docker.</p><blockquote id="0455508e-8b7f-4460-bf94-7bb1749ff8bd" class="">⚠️ Pour continuer vous devez avoir bien compris le principe de Docker.</blockquote><hr id="65c41241-39d3-4fb8-9afa-14b6ca4152fb"/><p id="14dc9fa5-1487-4d9d-b830-28b1228526a0" class="">
+</p><h1 id="8a9f207a-ec60-47d6-b239-3e88016d033c" class="">Docker-Compose :</h1><p id="dd40a74c-c671-4c3c-ad94-50edb0552719" class="block-color-yellow_background">Maintenant que vous avez compris la réel utilité de Docker, il s’agit de comprendre une fonctionnalité de <strong><mark class="highlight-blue">Docker</mark></strong> appelé Compose.</p><p id="b3a65f0b-fd23-4e9d-b6e1-fd9b8aafaa4c" class="">
+</p><p id="98912bf6-9ae8-40bb-b3a7-d72238754e11" class="">📄 Voici ce que explique la doc de Docker sur Compose:</p><blockquote id="31c13f1d-50a0-40cf-936b-f2f95566a50e" class=""><strong><mark class="highlight-blue">Docker Compose</mark></strong> est un <strong>outil qui a été développé pour aider à définir et à partager des applications multi-conteneurs.</strong>
+Avec <mark class="highlight-blue"><strong>Compose</strong></mark>, nous pouvons créer un fichier <mark class="highlight-orange"><strong>YAML</strong></mark> pour définir les services et, à l&#x27;aide d&#x27;une seule commande, tout mettre en <mark class="highlight-teal">route</mark> ou tout <mark class="highlight-red">démonter</mark>.</blockquote><p id="9caa6d1d-d144-4f4a-9330-0e58a1119ac1" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8036df20-c4ab-4381-9722-3c49f543a8f9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Compose</strong></mark> permettrait donc de gérer des applications qui utilisent plusieurs containers et de communiquer entre eux.</div></figure><p id="ec805da2-588e-426a-af88-eacc848dd274" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="c22fa84f-688c-46a6-b287-e0e32da2cd7d"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><em><mark class="highlight-gray">Vous devez également rendre un Makefile qui doit se trouver à la racine de votre
+répertoire. Il doit permettre de mettre en place toute votre application (c’est-à-dire
+build les images Docker via docker-compose.yml)</mark></em></div></figure><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="edfa891d-18a8-47af-838a-5cce5c8ec835"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Un texte sur fond bleu comme celui ci est toujours tiré du sujet <strong>d’Inception</strong> de 42.</div></figure><p id="841d3035-39f7-428b-8e69-6a89d5dd8794" class="">
+</p><p id="9b732f3c-22ff-49cc-bd2c-aecfcbecc5dc" class="">Ici le <mark class="highlight-gray"><em>sujet</em></mark> demande de build les différentes images via un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, cela tombe bien ce genre de fichier est appelé<mark class="highlight-orange"><strong> YAML</strong></mark>, c’est le fameux format indiqué plus haut par la Doc de Docker pour utiliser <strong><mark class="highlight-blue">Docker-Compose</mark></strong>.</p><p id="442bfbe4-d65c-4bc6-a37e-cb083a0285e0" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="53588bb4-be3f-4679-b517-75ee277fd153"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Ce projet consistera à vous faire mettre en place une mini-infrastructure de différents
+services en suivant des règles spécifiques.</mark></div></figure><p id="3a1c548a-5835-40d6-8252-7995877939cf" class="">
+</p><p id="d6a47e62-8bd5-402e-a30f-3d5603f4d33f" class="">Maintenant c’est certain, le projet consiste à relier plusieurs image <mark class="highlight-blue"><strong>Docker</strong></mark>, et pouvoir les lancer ensemble, sans pour autant, qu’elle perdent leur indépendances.</p><p id="7f9d87ef-1728-4a5f-b92e-de859e41dc9e" class="">Tout ca grace à <strong><mark class="highlight-blue">Docker-Compose</mark></strong> qui est prévu pour ce genre d’utilisation.</p><p id="c5c0c8c2-8bd4-4a3a-ba92-c7fe0bf39067" class="">
+</p><h2 id="cb61e8a8-fbdd-4b95-bbb6-45f8f331004b" class="">Mais ca dans la vie de tout les jours, c’est utile ?</h2><p id="798277d7-e07b-4752-b9a7-893b36114ece" class="">En fait, l’utilisation de <mark class="highlight-blue"><strong>Docker-Compose</strong></mark> prend tout son sens dans une infrastructure informatique.</p><p id="f28231a3-a0ac-4359-844f-544cf98d2b41" class="">
+</p><p id="4836e0d7-8d3b-4ff9-9b94-f211ced8ce6c" class="">Imaginez, vous lancez votre startup, <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark>. </p><p id="ef10100b-b6d7-4316-9aeb-287aeb3bffc0" class="">Vous auriez besoin de mettre en place un site internet, vous créez votre image nginx <em><mark class="highlight-gray">(ou vous récupérez celle de nginx sur le </mark></em><mark class="highlight-blue"><em><strong>DockerHub</strong></em></mark><em><mark class="highlight-gray">).</mark></em></p><p id="12a3caa5-6b31-423d-ab23-302da1c6e1ec" class="">Vous avez désormais un site internet fonctionnel pour votre entreprise.</p><blockquote id="a9452e0f-f9e7-4e43-8f28-738a8679d978" class="block-color-gray_background"><mark class="highlight-gray">Évidemment cela risque de prendre plus de temps que 2 phrases à mettre en place 🤣</mark></blockquote><p id="9cca17fb-ec33-4334-b1e1-2b884ba69401" class="">Maintenant que <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark> compte une dizaine d’employés, il serait sympa de mettre en place une badgeuse 🪪 à l’entrée pour éviter trop de travail à Manu 👮🏻‍♂️ de la sécurité.</p><p id="be601436-3024-4172-b0af-4e923dc78934" class="">
+</p><p id="23bcf94a-754a-4fdf-b499-cae8d9a1207c" class="">Vous créez donc une nouvelle image <strong><mark class="highlight-blue">Docker</mark></strong>, spécialement conçu pour enregistrer vos salariés dans une <em><strong><mark class="highlight-orange">base de données </mark></strong></em>et étant relié directement à votre <span style="border-bottom:0.05em solid"><em>badgeuse</em></span>.</p><p id="a313d297-bee8-4e05-8d2a-cebe6df473bf" class="">Vous déployez également rapidement une autre image gérant un site internet <a href="http://intra.Bananeo.fr">intra.Bananeo.fr</a> permettant à vos salariés de gérer leurs heures de travail.</p><p id="8dbe4487-55c1-4afa-8401-12e104354474" class="">
+</p><p id="377ab653-0f55-41d2-98ba-8c1d0dbe29e8" class="">Et Yop! Tout fonctionne. Mais votre badgeuse ne communique jamais avec le site de l’intra, et il serait sympa de pouvoir préciser à vos employés leurs retards, surtout pour Éric qui trouve toujours la bonne excuse depuis 2 semaines.</p><p id="fad242ff-f3fd-4514-ad7a-90bca8127032" class="">
+</p><h3 id="e590edee-9ddf-43d7-82ae-089d05f9b761" class="">C’est la qu’intervient <span style="border-bottom:0.05em solid">Compose</span>! </h3><p id="9df66766-d4ab-49cd-b052-d13bd1f2b546" class="">
+</p><p id="bcc43f80-3f68-4f5b-b3cd-f611e1a4ea47" class="">Vous allez mettre en place un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, rappelez vous que c’est le format <mark class="highlight-orange"><strong>YAML</strong></mark> qui permet de donner les instructions à <mark class="highlight-blue"><strong>Compose</strong></mark> sur comment gérer ces différentes images.</p><p id="c8ca62e8-bbe6-4961-8c28-12634528b2bf" class="">
+</p><p id="b834e0be-4b46-4002-85ef-3e3d9a8af885" class="">Regardons de plus près comment pourrait s’écrire le fichier <mark class="highlight-orange"><strong>.yml</strong></mark> de <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo </strong></mark><strong>:</strong></p><p id="ec64da44-8aae-42b4-a49f-92ce697a8443" class="">
+</p><pre id="944da228-3313-45fa-8c7b-86aa86cd04d4" class="code"><code>version: &#x27;3&#x27;
+
+services:       # précise les différents services (images) à utiliser 
+  nginx:
+    build: requirements/website/ 
+    env_file: .env          # indique le fichier optionnel contenant l&#x27;environnement
+    container_name: website # Le nom du container ( doit porter le meme nom que le service d&#x27;apres le sujet )
+    ports:
+      - &quot;80:80&quot;             # le port, détaillé juste en dessous
+    restart: always         # Permet de redémarrer automatiquement le container en cas de crash
+  nginx:
+    build: requirements/intra/
+    env_file: .env
+    container_name: intra
+    ports:
+      - &quot;80:80&quot;
+    restart: always 
+  mariadb:
+    container_name: badgeuse
+    build: mariadb
+    env_file: .env
+    restart: always</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bc268ca8-fafe-4378-9e0b-e661f2e09cfc"><div style="font-size:1.5em"><span class="icon">😆</span></div><div style="width:100%"><mark class="highlight-gray">Non, ce docker-compose.yml ne fonctionne pas sur Inception.</mark></div></figure><p id="04bbce7c-a084-484e-860b-86dfda1fd207" class="">
+</p><p id="e3f2d273-980f-4690-97c1-cf6778f573c5" class="">Ce fichier<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">.yml </mark></strong>permet de donner les instructions à <strong><mark class="highlight-blue">Compose</mark></strong> pour gérer 3 images mariadb, nginx et un autre nginx.</p><p id="13b7410b-ccb4-4d64-af80-fa06320d62b3" class="">Tel un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> qui doit obligatoirement commencer par <mark class="highlight-blue"><strong>FROM</strong></mark> suivi de la version, votre fichier <strong><mark class="highlight-orange">YAML</mark></strong> doit commencer par la version de <mark class="highlight-blue"><strong>Compose</strong></mark>, référerez vous aux <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/">versions actuelles</a>.</p><p id="680ebd55-9d8b-4737-99ba-50bd4f31971a" class="">
+</p><h1 id="f9f6cf7a-096e-454a-acea-a5f7577b391b" class="">2. Comprendre le sujet:</h1><p id="c73554f2-c03b-4630-b053-20d609eb7d15" class="">
+</p><ul id="69cc0922-dea6-447c-835c-37c1fe5caf7b" class="toggle"><li><details open=""><summary><mark class="highlight-yellow_background">SUJET À TÉLÉCHARGER</mark></summary><figure id="d3f0a324-3fe9-4ea6-ac94-2be4e0af2e7e"><div class="source"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/subject.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/728c9e20-e3a5-4029-b834-c39900551e63/subject.pdf</a></div></figure></details></li></ul><p id="0742d883-c149-49ac-85d5-ec5b8c798bc2" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="51908b02-791a-418d-b979-f7d43ea10df8"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Chaque service devra tourner dans un container dédié.</mark></div></figure><hr id="257b76a5-55a9-4ff1-ac01-f9b030458909"/><p id="9498cacd-1ffb-4673-af93-45195c4bdd1e" class="">
+</p><p id="97bb30d9-1770-4c2d-805b-60fff7f8c2a8" class=""><mark class="highlight-yellow_background">Voici les différents containers à mettre en place d’après le sujet :</mark></p><ul id="1633c8a7-1c91-4646-adaa-97c28ce648f0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">NGINX <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span></li></ul><ul id="5f870fe4-a7dd-4265-ad34-1b7e7644c3cb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WordPress <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span></li></ul><ul id="2601ff0e-0ab8-429e-9d5d-c8a9175f89c3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">MARIADB <mark class="highlight-gray"><em>(sans nginx)</em></mark></span></li></ul><p id="94c77dc5-fe2a-4f1a-94b8-acf7542a5c51" class="">
+</p><p id="f2f95fff-c8da-4b71-9789-ca62f82f809b" class=""><mark class="highlight-yellow_background">Voici les deux volumes à mettre en place d’après le sujet :</mark></p><ul id="98b86c8d-b8ff-435f-8dee-1d7fa1b04164" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Volume contenant votre <strong>base de données WordPress</strong></span></li></ul><ul id="54553d68-73b5-4a14-822a-8bbc1802de91" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Volume contenant les <strong>fichiers</strong> de votre <strong>site WordPress</strong></span></li></ul><p id="35cba2a0-defe-4c21-81f5-c163b1b40428" class="">
+</p><blockquote id="8cd72e51-cdf7-402f-9192-f6eb70568cd0" class="">Ces volumes doivent être disponible à partir du dossier <code><em><strong>/home/</strong></em></code><code><mark class="highlight-gray"><em><strong>&lt;login&gt;</strong></em></mark></code><code><em><strong>/data</strong></em></code> de la machine hôte utilisant <strong><mark class="highlight-blue">Docker</mark></strong>.</blockquote><p id="47bc2f0c-7070-4ad1-b8a0-dd2d5c217021" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f8bf2ff1-a460-41e3-9a04-5d91eeba11ef"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les volumes <mark class="highlight-blue"><strong>Compose</strong></mark> présentent plusieurs avantages comme pouvoir être gérer à l&#x27;aide des commandes de la CLI de Docker ou de son API ou encore pouvoir être partagés de manière plus sûre entre plusieurs conteneurs. <a href="https://docs.docker.com/storage/volumes/">+ d’info sur la doc de Docker</a></div></figure><p id="884ca9d8-57d3-4b2d-a2b5-62ff812b82a1" class="">
+</p><p id="9f50d020-4a2a-4ab8-89a8-8cf7b751e7fe" class=""><mark class="highlight-yellow_background">Nous devrons également mettre en place :</mark></p><ul id="bf55a163-68b1-41e0-b19a-866f10039d3a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un <a href="https://docs.docker.com/engine/reference/commandline/network/"><span style="border-bottom:0.05em solid"><em><strong>docker-network</strong></em></span></a> qui fera le lien entre vos containers.</span></li></ul><p id="7251929d-d36d-454d-a0c6-cc63dc2105e6" class="">
+</p><p id="009b8de6-276c-4fe4-9983-91becd1b4b04" class=""><mark class="highlight-yellow_background">Les utilisateurs à créer dans notre base de données WordPress:</mark></p><ul id="1ed5d318-a221-4317-b32a-20dbc36ca9e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un utilisateur <strong>Admin</strong> <mark class="highlight-gray">(ne doit pas s’appeler admin)</mark></span></li></ul><ul id="8ab46da6-5e3a-4b81-9943-a41e3d41f8ed" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un utilisateur standard</span></li></ul><p id="e49e2937-387a-4931-b00d-225c2ac2ae9d" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="bd723d49-daed-4be1-9d07-6148f9486bd7"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer notre nom de domaine afin qu’il pointe vers <strong>notre adresse IP locale</strong>. Ce nom de domaine sera <span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>&lt;login&gt;</em></mark></span><span style="border-bottom:0.05em solid">.42.fr</span></div></figure><p id="e189621a-d5ec-474e-b916-488de1a64730" class="">
+</p><hr id="a91091f2-7221-4d91-8367-0a41b343bf4b"/><p id="43d5e14a-a418-43d0-8220-dd39282a5025" class="">
+</p><h3 id="4ba630ee-5f89-45c3-8468-fbb80af2d761" class="">Afin de réaliser ces différentes tâches, le sujet apporte plusieurs autres précisions :</h3><p id="2a6e392a-edba-4235-b063-14ccedc760b3" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="2999c57a-0759-4efb-83af-fe0a09991390"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Le tag latest est <span style="border-bottom:0.05em solid"><strong>interdit</strong></span>.</div></figure><p id="5a67ea28-ef48-4c4f-8518-da81bcb1d45c" class="">Lorsque vous précisez une dépendance à installer, vous devez préciser sa version à installer, l’avantage du tag <strong><mark class="highlight-gray"><em>latest</em></mark></strong> est clair, installer la <strong>dernière version</strong> d’une dépendance. </p><p id="52df9f15-ceed-4c57-8212-418ab822e855" class="">Cependant <mark class="highlight-gray"><em><strong>latest</strong></em></mark> à également un <span style="border-bottom:0.05em solid">gros désavantage</span>, il peut apporter des <strong>problèmes de compatibilité</strong> sur le temps. </p><p id="f5046f3a-4ac8-4cd9-89d6-4c864ea16a3b" class=""><strong><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Exemple:</mark></span></strong><mark class="highlight-gray"> Aujourd&#x27;hui vous pourriez tout configurer de manière a que les dernières versions fonctionnent correctement entre elle, mais imaginez que 2 ans après quelqu&#x27;un souhaite tester votre logiciel, il se pourrait que certaines dépendances ai évolué et fonctionnent autrement entre eux, c’est pour cela qu’il est préférable d’indiquer la version à utiliser.</mark></p><p id="8611060a-ff44-4e47-ac06-69942d510e24" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="23f3458d-331c-42dc-b6c0-6c7a5551ffe3"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Aucun mot de passe ne doit être présent dans vos <mark class="highlight-blue"><strong>Dockerfiles</strong></mark>.</div></figure><p id="404e5c39-3d88-46f9-a7f8-4d49086fa173" class="">Faut-il vraiment expliquer ce point la ? 😅</p><p id="76993af8-3a47-44fe-8144-3f950bc1b9b8" class="">Il faut dire que c&#x27;est une des plus grosses erreurs des dev utilisant Github.</p><p id="ce5749ff-33a3-4ea1-b605-12ce5c844135" class="">Oui, il arrive que des développeurs push dans leur repo certaines informations sensibles, tel que des clefs d’API ou encore des mots de passes en clair 🫢</p><p id="02ba11aa-d43d-418a-acd0-9221883bbe8a" class="">Évidemment ça reste <span style="border-bottom:0.05em solid"><strong>l’erreur number 1</strong></span> à ne pas faire. </p><p id="f108bf42-a78a-4671-8f3e-342739755ef7" class="">Si cela vous arrive, ne faites pas la deuxième erreur de re-push par dessus en supprimant votre clef ou votre mot de passe, les commits de Github finiront par vous trahir ❌</p><p id="7348d724-0423-49bd-9db8-cb8030e3ef99" class="">Pensez plutôt à rapidement <a href="https://makina-corpus.com/devops/git-annuler-proprement-un-commit-apres-un-push">supprimer votre commit</a>.</p><p id="37cfb80e-9c13-4f47-8516-a80f8e243fd2" class="">
+</p><p id="1f7a884b-c420-4ff5-bb52-ad5338b7bb63" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4d5d3714-959d-4028-b31b-6c46f1e78b45"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">L’utilisation des variables d’environnement est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</div></figure><p id="a007273e-332c-4b58-bc80-9f90f236a69b" class="">Cette consigne va avec la précédente, vous devez donc utiliser l’environnement de votre machine.</p><p id="09ce0b74-3e88-42c0-b574-f742d7912cad" class="">Cela pourrait sembler utile pour stocker les mots de passe ou autres</p><p id="52dcc711-e122-45ae-b95b-d2ddac032329" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="10eed9cb-1ad3-477e-ad96-2b62f670c87d"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">La mise en place d’un fichier <span style="border-bottom:0.05em solid"><strong>.</strong></span><em><span style="border-bottom:0.05em solid"><strong>env</strong></span></em> afin de stocker vos variables d’environnement est <span style="border-bottom:0.05em solid"><strong>fortement conseillée</strong></span>.</div></figure><p id="fc78d56a-61b3-4cdf-88e4-2373e1537e94" class="">Nous savons désormais comment stocker notre environnement.</p><p id="82d43a11-66c7-4007-a40c-21a9cb180b9a" class="">
+</p><p id="0b3a6cec-1bcd-4c5f-89c4-c3ee84ba8147" class="">Dans le sujet, nous trouvons également un exemple d’a quoi pourrait ressembler ce fichier .env grace à un <code><em>cat srcs/.env</em></code> :</p><pre id="8d95a9ec-8e5f-4130-b0e3-650c217d0437" class="code"><code>DOMAIN_NAME=wil.42.fr
+# certificates
+CERTS_=./XXXXXXXXX
+# MYSQL SETUP
+MYSQL_ROOT_PASSWORD=XXXXXXXXXX
+MYSQL_USER=XXXXXXXXXX
+MYSQL_PASSWORD=XXXXXXXXXX
+[...]</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="33744fd8-50ef-4057-ae28-b6701ed45f64"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Grace à ce <code>cat</code> nous pouvons imaginer les infos dont nous aurons besoin pour mettre en place notre projet.</div></figure><p id="5e10b0fe-8123-4caa-97fb-ee6f86d4ab97" class="">
+</p><p id="2288bc5f-8f27-4295-bdb9-07ce59c457b7" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="78a5fb63-afc4-49b3-85a8-bbc4381a7275"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Votre container <strong>NGINX</strong> doit être le seul point d’entrée de votre infrastructure par le port <strong>443</strong> uniquement en utilisant le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div></figure><p id="bdc71cd2-cc00-46e2-8809-e0604c44b61b" class="">Le seul point d’entrée de notre Compose doit être par le container de NGINX, passant par le port <strong>443</strong>.</p><p id="d92e141c-ecd5-49e6-9ba4-f392aa2ea133" class="">C’est à dire que le seul porte qu’ouvrira Docker-Compose sur votre machine sera le <strong>443</strong> <mark class="highlight-gray"><em>(tips: c’est le port qui permet l’accès par https:// , et le 80 par http://)</em></mark></p><p id="23c3588e-6456-4c5a-8c7a-ad3795ebbfcf" class="">Ce <em><strong>schéma</strong></em> fournit dans le sujet devrait <span style="border-bottom:0.05em solid">éclaircir</span> les choses:</p><p id="6802fc4b-58d3-4015-afb2-4d85bc525b86" class="">  </p><figure id="fbc91472-3de7-42d6-b422-3938f126347b" class="image"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/Capture_dcran_2022-07-19__16.24.51.png"><img style="width:1012px" src="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/Capture_dcran_2022-07-19__16.24.51.png"/></a></figure><p id="3dd64379-1cbb-4a86-8ce3-5b698a91b004" class="">Ici l’ont retrouve les ports qui permettront à <strong>WordPress</strong> de communiquer en interne avec la base de données <mark class="highlight-gray">(pour pouvoir stocker des nouvelles pages ou autres)</mark> et <strong>Nginx</strong> qui communique avec <strong>WordPress</strong> <mark class="highlight-gray">(qui lui dira quoi afficher sur le serveur web).</mark></p><p id="5f93c5a3-cfc7-40de-ac70-0a4be435f5af" class="">Le container <strong>MariaDB</strong> stocke ses informations <mark class="highlight-gray"><em>(base de donnée)</em></mark> dans le volume correspondant et <strong>WordPress</strong> <em><mark class="highlight-gray">(site wordpress)</mark></em> dans le sien.  </p><p id="77b807c2-b22f-4af6-960e-4bb85602aef8" class="">
+</p><p id="e42c28ef-5a83-42f2-baba-4c9ef246f6fb" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="810f2a4c-8830-43e1-9784-d65bd04c12f3"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Il est indiqué que nous devons utiliser le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div></figure><p id="e03159a7-07ca-4f23-97de-c35af7bc44e7" class="">
+</p><h3 id="9bc53b72-589d-418d-babe-e881be924940" class="">Mais qu’est ce que <span style="border-bottom:0.05em solid"><em><strong>TLS</strong></em></span> ?</h3><p id="1e97a0c5-7633-403a-ba1d-297d3d5d8a02" class="">
+</p><p id="77434eac-1c36-42ed-9ceb-2b25cc633b5a" class="block-color-yellow_background"><span style="border-bottom:0.05em solid"><strong>Wikipédia</strong></span> nous indique : </p><p id="8115a064-5a3b-42b4-9c9f-0acbc1b01cfc" class="">La <em><strong>Transport Layer Security </strong></em><em>(</em><em><strong>TLS</strong></em><em>) </em>ou « Sécurité de la couche de transport » est un protocole<a href="https://fr.wikipedia.org/wiki/Transport_Layer_Security#cite_note-1"> </a>de sécurisation des échanges par <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_informatique">réseau informatique</a>, notamment par <a href="https://fr.wikipedia.org/wiki/Internet">Internet</a>.</p><p id="f94e107b-b1be-4dc8-abae-753bb719f2cb" class="">
+</p><p id="3c57e43c-7f24-4849-90c1-0a2661457490" class="">TLS permet :</p><ul id="69795e6b-e150-4117-bd6d-ee48650e258a" class="bulleted-list"><li style="list-style-type:disc">l&#x27;authentification du serveur</li></ul><ul id="7a707245-906c-440c-9560-b74c9e69469b" class="bulleted-list"><li style="list-style-type:disc">la confidentialité des données échangées<mark class="highlight-gray"><em> (ou session chiffrée)</em></mark></li></ul><ul id="8e0f6edb-0e98-4d67-844e-62886a0b34d7" class="bulleted-list"><li style="list-style-type:disc">l&#x27;intégrité des données échangée</li></ul><ul id="566870b7-4a2c-4baa-b478-ddb42db23113" class="bulleted-list"><li style="list-style-type:disc">de manière optionnelle, l&#x27;authentification du client <em><mark class="highlight-gray">(mais dans la réalité celle-ci est souvent assurée par la couche applicative)</mark></em></li></ul><p id="34d16a91-b830-4ffd-86c6-2e27a04a99d6" class="">
+</p><p id="dfffd74f-e5bb-4f9a-91b6-56df0c33a21b" class="">Je ne sais pas vous mais <strong>TLS</strong> me semble ressembler de très près du <strong>SSL</strong>, ce fameux protocole qui rajoute un <strong><mark class="highlight-teal">cadenas vert</mark></strong> quand vous accédez à un site <mark class="highlight-teal"><strong>sécurisé</strong></mark>, comme la plupart des sites aujourd&#x27;hui. </p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4c903739-661d-46aa-a6e1-b511c326b1c5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">C’est ce protocole qui change vos <strong>URL</strong> de <em>http</em> en <em>https</em>.</div></figure><p id="847f0065-50e4-430b-bb8a-101e2e407cd3" class=""> </p><p id="1de91ea1-1a02-422a-b13b-032d6d2b4584" class="">Ma question est donc rapidement,</p><h3 id="86931490-2d47-442e-9013-46dce2de255f" class="">Quel est la différence entre <mark class="highlight-teal">TLS</mark> et <mark class="highlight-teal">SSL</mark> ?</h3><p id="d22c2937-0eb2-49c6-9e30-be4f2fb13ef4" class="">
+</p><p id="9ec9ebac-d23f-4f53-87ce-49ccca00a636" class=""><strong>SSL</strong> et <strong>TLS</strong> sont deux protocoles qui permettent l’authentification, et le chiffrement des données qui transitent entre des serveurs. </p><p id="d8d3d406-77ae-4f49-9626-eef554cb2aee" class="">
+</p><p id="28958bc5-aa19-4e19-b6a0-ee76d402d340" class="">En fait le <strong>SSL</strong> est le prédécesseur du <strong>TLS</strong>. Au fil du temps, de nouvelles versions de ces protocoles ont vu le jour pour faire face aux vulnérabilités et prendre en charge des suites et des algorithmes de chiffrement toujours plus forts, toujours <span style="border-bottom:0.05em solid">plus sécurisés</span> 🔐</p><p id="c49466a2-05c8-47ce-ac85-697cc3e05dd6" class="">
+</p><h3 id="d78c479f-4d97-4de4-93ce-7958fd53efd3" class="">L’histoire du SSL/TSL :</h3><p id="e335a706-1df7-4e5f-a53f-778915fffca2" class="">
+</p><p id="86a7b5bd-dad9-484c-85b7-eecab014a851" class="">Initialement développé par <strong>Netscape</strong>, le SSL sort en <strong>1995</strong> dans sa version SSL 2.0 <em><mark class="highlight-gray">(le SSL 1.0 n’étant jamais sorti)</mark></em>. </p><p id="aa29547b-c2cb-438a-95e5-6e5ea30be603" class="">Mais après la découverte de plusieurs vulnérabilités 🔓 en <strong>1996</strong>, la version 2.0 est vite remplacée par le SSL 3.0. </p><p id="b0b62aad-aa93-4cfd-a3a8-a910b6eefd91" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ead2d590-a3da-474d-8890-6af0daa517e4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em><mark class="highlight-gray">Les versions 2.0 et 3.0 sont parfois libellées ainsi : SSLv2 et SSLv3.</mark></em></div></figure><p id="ffe54d0d-517a-4691-ab7e-3686d2d244c4" class="">
+</p><p id="aaeae321-5c5a-4909-8270-43ca647fd9ad" class="">Basé sur le SSL 3.0, <a href="https://tools.ietf.org/html/rfc2246">le TLS est introduit</a> en <strong>1999</strong> comme <strong><em><span style="border-bottom:0.05em solid">la nouvelle version du SSL.</span></em></strong></p><p id="251ffca1-a6c9-4cf0-8571-6014aa6c6147" class="">Le protocole <strong>TSL</strong> est donc simplement le <span style="border-bottom:0.05em solid"><strong>remplaçant du SSL</strong></span>. Il corrige certaines <strong><mark class="highlight-red"><em><span style="border-bottom:0.05em solid">vulnérabilités de sécurité</span></em></mark></strong> dans les anciens protocoles <strong>SSL</strong>.</p><p id="ef2063a6-bf2e-4c90-970d-91c7ac39a0b3" class="">
+</p><p id="8d3c6881-ce99-4294-9ad9-746c22aabbe0" class="">Nous devrons donc rendre notre système sécurisé, par un protocole semblable au SSL, le <mark class="highlight-teal"><strong>TSL</strong></mark>. </p><p id="29bfd145-25d0-4b30-81cc-d6701f05bf0b" class="">
+</p><hr id="9dee229b-ccea-4ac1-8c60-a7fab6c2c5cc"/><p id="ca94e177-6c10-4259-ad85-a5ec658d0641" class="">
+</p><p id="8e315329-2838-401b-ba26-dc6bf70b6548" class="">Avant de commencer notre projet, regardons le dernier document fourni avec le sujet, la <span style="border-bottom:0.05em solid"><strong>structure attendue de notre projet</strong></span> : </p><p id="5f671fca-1635-4af4-b7c3-7c9323b7b485" class="">
+</p><pre id="f6124e95-ce28-494a-94ec-7f459fe14d22" class="code"><code>$&gt; ls -alR
+
+total XX
+drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
+drwxrwxrwt 17 wil wil 4096 avril 42 20:42 ..
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Makefile
+drwxrwxr-x 3 wil wil 4096 avril 42 20:42 srcs
+
+./srcs:
+total XX
+drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
+drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 docker-compose.yml
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .env
+drwxrwxr-x 5 wil wil 4096 avril 42 20:42 requirements
+
+./srcs/requirements:
+total XX
+drwxrwxr-x 5 wil wil 4096 avril 42 20:42 .
+drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 bonus
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 mariadb
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 nginx
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 tools
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 wordpress
+
+./srcs/requirements/mariadb:
+total XX
+drwxrwxr-x 4 wil wil 4096 avril 42 20:45 .
+drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
+drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
+drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools
+[...]
+
+./srcs/requirements/nginx:
+total XX
+drwxrwxr-x 4 wil wil 4096 avril 42 20:42 .
+drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
+drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
+-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
+drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools</code></pre><p id="c18f56ca-6c06-48c4-b2fd-ae9796c6cdcf" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="327d8adf-24e7-4f84-afe6-a555d69020a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Évitons de négliger ce genre d’information fourni avec le sujet, elle peut déjà nous aider à <span style="border-bottom:0.05em solid">démarrer</span> le projet.</div></figure><p id="5a9d6456-cb08-4739-804c-23b0ace0e04e" class="">
+</p><p id="6dfcee38-7c5a-4bd4-abbd-4f8faf4d6018" class="">Cette structure nous montre clairement qu’il doit y avoir un dossier principal <code>srcs</code> contenant notre fameux <strong><mark class="highlight-orange">docker-compose.yml </mark></strong>que nous avons vu juste au dessus, notre fichier <strong><mark class="highlight-teal">.env</mark></strong>, ainsi qu’un dossier <code>requirements</code> qui contiendra nos différents containers.</p><p id="ee0d482d-364a-4c5c-8507-ef5cb3ddca46" class="">
+</p><p id="980e26d4-a744-4383-a4be-e8be2e3e1139" class="">Rappel des <span style="border-bottom:0.05em solid"><strong>3 containers </strong></span>à mettre en place : </p><ul id="6ecfbb73-26c2-486f-b5da-5e182a33647e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>NGINX</strong> <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span></li></ul><ul id="ecd91165-cd12-4c60-800a-754d9a8f3b15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>WordPress</strong> <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span></li></ul><ul id="c96e2680-7919-4f53-862f-7f3a931bcdaf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans nginx)</em></mark></span></li></ul><p id="1469e921-f1cb-4e6a-8dff-c0c1fb79a3ec" class="">
+</p><p id="23ac64a2-fa42-4294-8731-39a68ea7ebf4" class="">Comme je l’expliquait au début, chaque containers est représenté par un <code>dossier</code> portant son nom.</p><p id="77dd0569-ec54-4b3b-bf7c-35737ae24d2e" class="">Dans chaque dossier de container doit obligatoirement se trouver son <strong><mark class="highlight-blue">Dockerfile</mark></strong>, sans quoi <mark class="highlight-blue"><strong>Docker</strong></mark> serait perdu.</p><p id="1b50ae16-9f8e-417f-8f32-e0996347ab5c" class="">Rappelez vous, en + du <strong><mark class="highlight-blue">Dockerfile</mark></strong> nous pouvons rajouter différents fichiers/dossiers de config qu&#x27;il serait ensuite intéressant de copier dans notre container grâce au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> et son mot-clef <strong><mark class="highlight-blue">COPY</mark></strong>.</p><p id="c0b86384-8ba0-4ffa-a802-1d3aba4bc303" class="">
+</p><p id="76340aab-8485-4e1a-be44-bbcc532a2042" class="">Le schéma fournit avec le sujet nous indique directement quel fichiers il serait intéressant de fournir avec nos containers, les voici:</p><ul id="9006c3e7-c2d8-41b3-abe1-b90676f7d170" class="bulleted-list"><li style="list-style-type:disc">Un fichier <em><strong>conf</strong></em> qui pourrait contenir le fichier de configuration du container <mark class="highlight-gray"><em>(la config de nginx pour son container associé par exemple)</em></mark></li></ul><ul id="86fe2336-2217-446c-a699-da19e247355b" class="bulleted-list"><li style="list-style-type:disc">Un fichier <em><strong>.dockerignore.</strong></em> Tout comme le fichier <em><strong>.gitignore</strong></em>, il précise à <mark class="highlight-blue"><strong>Docker</strong></mark> des fichiers à ne pas regarder, car ils n&#x27;auront surement aucune utilité pour <mark class="highlight-blue"><strong>Docker</strong></mark>.</li></ul><ul id="957eedb5-b4be-4f23-8b46-96bb285e592c" class="bulleted-list"><li style="list-style-type:disc">Un dossier <code>tools</code> permettant surement de stocker les autres outils dont nous pourrions avoir besoin.</li></ul><p id="37068c5c-34f4-4974-b519-d9e1117490e7" class="">
+</p><p id="8f02ffce-3d00-4d7a-853a-52c1166d8a20" class="">Nous pouvons déjà reproduire la structure de fichiers demandé histoire d’y voir plus clair 🤓</p><p id="1ee19e6d-52b2-489b-bb2b-3fbac296e41a" class="">
+</p><p id="55e06a75-98c2-48b7-aa48-138b9d93cd2b" class="">Maintenant que nous comprenons ce que le sujet attends de nous,  il serait interessant de se demander:</p><p id="f539259d-b0cc-4186-a854-c56786929e95" class="">
+</p><hr id="0a8fa518-aa95-4029-a762-dc3ece0547ab"/><h3 id="f55c800f-80e4-4104-be0e-9ccc52ee79ed" class="">Par ou commencer ?</h3><p id="30213364-85b5-483b-a752-78cec6b9f7bd" class="">
+</p><p id="cf1cc64e-4870-4a0e-ad44-d0c117e942f6" class="">Une fois que nous avons nos <code>dossiers</code> et nos fichiers requis, nous devrions commencer par créer un des trois containers requis.</p><p id="b56d7473-d53e-4b34-958a-75e7e251cc8e" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9d4a132e-d526-4106-800f-00fa5515310b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Inutile de s’attaquer à la partie <mark class="highlight-blue"><strong>Compose</strong></mark> pour l’instant, comment voudriez vous relier 3 containers entre eux si vous n&#x27;en possédez aucun?</div></figure><p id="88e350cb-8790-4434-b2e0-19e0eb5b0296" class="">
+</p><h2 id="67a0c7ed-d727-477a-a4b8-105a3fa053ca" class="">3. Container NGINX :</h2><p id="5d346046-40f2-4884-816a-8582197fbff0" class="">
+</p><p id="2128c2d2-f875-40c4-82e8-482b5c1b01f0" class="">Commençons par notre container le moins flou, <strong>NGINX</strong>.</p><p id="43938e44-0103-450e-ad7d-9d8c58b24aff" class=""><strong>NGINX</strong> permet de mettre en place un <span style="border-bottom:0.05em solid">serveur Web</span>. </p><p id="e5923bb6-6e2c-4155-ae3d-1504a2b28686" class="">
+</p><p id="1993a158-738c-4850-b4fc-6b4086d90bc8" class="">Nous allons commencer par étape afin de comprendre au mieux comment utiliser et se balader avec <mark class="highlight-blue"><strong>Docker</strong></mark>.</p><p id="5a36f691-07d9-44da-a4e2-e3a3ab652903" class="">
+</p><p id="0bf376e5-3ba5-4de5-9e66-4acdd4fa0079" class="">Ouvrons d’abord le fichier essentiel de Docker, le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> <strong>NGINX. </strong></p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="83fe1b0f-766b-498f-8849-643827feff4d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Rappelez vous qu’il existe un une image nginx toute prête, mis à disposition par <strong>nginx</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>.                                                                                                                                          La plupart des développeurs serait directement passé par la, mais ici <em><strong>42</strong></em> nous l’interdit, afin de savoir la recréer nous même.</div></figure><p id="9f6c3ce7-d1fe-4559-b12a-6d14639df1db" class="">Si vous avez bien suivi, vous devriez savoir quel ligne écrire en premier, du moins le premier mot clef du Dockerfile.</p><ul id="df8f64db-8f77-4e3f-a939-4c818c731586" class="toggle"><li><details open=""><summary><strong>SPOIL 🔎</strong></summary><p id="acd8e1f7-52ae-49e9-bec2-638991a72746" class="">C’est <mark class="highlight-blue"><strong>FROM</strong></mark> ! Comme indiqué au début du cours, <mark class="highlight-blue"><strong>FROM</strong></mark> permet d’indiquer à Docker sur quel OS nous souhaitons faire tourner notre machine. C’est un mot clef obligatoire et il doit <span style="border-bottom:0.05em solid"><strong>toujours être en premier</strong></span> d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="e2a92c44-2672-404d-b1f1-83e0b08c02ce" class="">
+</p></details></li></ul><p id="e402d8c6-b083-4d5b-ab73-8425eb14288e" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="51823c22-b13d-4339-93df-366986546d3c"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Pour des raisons de performance, les containers devront être build au choix : soit sous Alpine Linux avec l’avant-dernière version stable, soit sous Debian Buster.</mark></div></figure><p id="a8bdb694-bd2a-4711-b8d8-562ebf4bc637" class="">Pour l’OS, nous avons donc le choix entre <em><mark class="highlight-gray">debian:buster</mark></em> ou <mark class="highlight-gray"><em>alpine:X.XX </em></mark><em>(vérifiez l’avant-dernière version stable en date, </em><a href="https://www.alpinelinux.org"><em>ici</em></a><em>).</em></p><p id="5089bfd5-dfda-487b-9bd8-99e6a9c4de4e" class="">
+</p><h2 id="3cc84ecd-69dc-4cb9-aaf1-dc3e71d5685c" class="">Quel différence entre <span style="border-bottom:0.05em solid">Alpine</span> et <span style="border-bottom:0.05em solid">Debian</span>?</h2><p id="e57305b8-6852-4178-8c06-b9bf9ce99e52" class=""><mark class="highlight-orange"><strong>Alpine Linux</strong></mark> est une distribution <strong>Linux</strong> légère, orientée sécurité, elle contient le moins de fichiers et outils possible afin de laisser la possibilité au développeur de les installer par soi même si besoin.</p><p id="7d504782-0ea7-45e2-a9e7-85d72272090e" class=""><strong><mark class="highlight-orange">Debian</mark></strong> est le système d&#x27;exploitation universel. Les systèmes Debian utilisent actuellement le noyau Linux ou le noyau <a href="https://www.freebsd.org/fr/"><strong>FreeBSD</strong></a>. </p><p id="55b14ffe-030b-4816-a8e1-4b8503f64e5c" class="">
+</p><p id="4c66d9d5-43d6-44d8-a3d0-7c8cf8a60d30" class="">Pour ma part, étant plus à l’aise avec ce système, je vais utiliser <mark class="highlight-orange"><strong>Debian</strong></mark><mark class="highlight-gray">.</mark></p><p id="608830b6-10c3-4fbf-ac5f-d078e5c88317" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="7977b074-bf41-4223-a747-7ab7ed4c8c10"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La suite du tutoriel est représenté pour <mark class="highlight-orange"><strong>Debian</strong></mark>. Mais vous devriez facilement pouvoir adapter cela sur <strong><mark class="highlight-orange">Alpine</mark></strong>.</div></figure><p id="275dd871-20ab-4a35-8fe5-ed5b0ad084c2" class="">
+</p><p id="69d6d7fe-a64b-46cc-841f-28862364046f" class="">Nous pouvons donc commencer par écrire :</p><p id="85e3243b-2abc-48de-8661-f20580a92e2c" class=""><mark class="highlight-brown"><code>FROM debian:buster</code></mark></p><p id="fa5a331f-bd20-4157-81e7-3ac76719895a" class="">dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="f15bf145-0229-4266-92b8-d5bc21f5c59c" class="">
+</p><p id="4362d715-5713-436b-918b-e0d3e21d8756" class="">Maintenant j’ai envie de vous dire, si cette ligne est la seule ligne obligatoire, notre container pourrait-il démarrer ?</p><p id="987e9aac-74e1-47b0-a70a-7addda0c42b3" class="">Nous avons indiqué un OS à installer, nous devrions pouvoir le lancer.</p><p id="ecee50fe-740e-44ad-8cfd-e018ed6d4373" class="">Le plus sympa, c’est que <mark class="highlight-blue"><strong>Docker</strong></mark> peut nous permettre de lancer une <mark class="highlight-gray"><em>“machine virtuelle”</em></mark>, mais en lui précisant, l’ont peut également accéder à son terminal! Utile pour voir ce qu’il y’a dedans ou effectuer nos propres tests.</p><p id="cbb7e67b-ca45-4bc8-9386-8e342bc679a7" class="">
+</p><p id="f5bf76ff-7354-4ad5-ab13-f7c157476743" class="">Pour cela, il faut connaitre les commandes indispensables aux containers de Docker.</p><p id="8c596d33-2ef1-4905-be4e-b428dc05da25" class="">
+</p><hr id="cb14bfb1-93cf-4a93-9a02-61dbc0e01372"/><p id="0b6e1d35-d91f-4b4b-9f11-0ae6001ae369" class="">
+</p><h2 id="567cadc0-11cc-4e19-9dc1-07aa5cfce4bf" class="">Les commandes essentiels d’un container Docker :</h2><p id="222c6c72-b34a-4821-887f-22c542012952" class="">
+</p><p id="f6376a96-fb45-4334-bbe4-0b756ccd8611" class="">Un container <mark class="highlight-blue"><strong>Docker</strong></mark> doit être <strong>build</strong> avant d’être lancé.</p><p id="be7ad793-082b-459b-9130-529f1abcb46b" class="">C’est pendant le <strong>build</strong> que vous pourrez obtenir des infos sur des potentiels erreurs que vous auriez fait dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="91495a61-717c-4468-a98e-d29fa84eb0f2" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="629d581e-1dbc-4f1c-a13a-8a4bcf174be8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Chaque commande Docker commence par le mot clef <code>docker</code></div></figure><p id="48a5efcb-6a96-4693-837e-06192d289072" class="">
+</p><p id="e4a42090-e202-425e-bf0b-40c9ff52a3ba" class=""><span style="border-bottom:0.05em solid">Build un container Docker :</span></p><p id="7800ffef-cbee-4339-a90a-f83628646757" class=""><code>docker build</code></p><p id="94a42333-b90f-463a-af2d-4c5f7c6edb0e" class="">😵 J&#x27;espère que vous n’oseriez pas tenter cette commande sans l’avoir parfaitement compris !</p><p id="cf5222f9-7351-4cfe-a4c1-c79b4a727a14" class="">🤪 De toute manière, la commande n’est pas fonctionnel, docker demande obligatoirement un chemin ou se trouve le Dockerfile de l’image à build. </p><p id="81257e6d-8841-4e27-a042-f6d71f8d06dc" class="">Dans notre cas, ce serait <code>docker build srcs/requirements/nginx/</code></p><p id="712b723d-1ae1-422a-bce0-9904ca21497c" class="">Ou encore plus simple, <code>docker build .</code> en vous trouvant directement dans le dossier nginx.</p><p id="83154f65-b193-4936-99b0-9a0097323981" class="">Vous pouvez également préciser un nom à votre build, avec le flag <code>-t</code></p><p id="2bdc31d0-9e52-4f3d-9674-312512fba7bb" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="1aca7ed1-638a-412c-aebf-e2be898c1444"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Si vous obtenez une erreur de type <code>Cannot connect to the Docker daemon</code>, vérifiez que Docker est bien ouvert et <a href="https://docs.docker.com/desktop/windows/troubleshoot/">qu’il fonctionne</a>.</div></figure><p id="6bb40d30-e027-4e2d-9716-ef2553289b79" class="">
+</p><p id="fd8e0055-09b1-483b-b9c1-e00d24fae3c0" class="">
+</p><p id="c7149139-5f31-4466-9942-2af5e8ebfb75" class=""><span style="border-bottom:0.05em solid">Connaitre les images actuels:</span> <em><mark class="highlight-gray">(après un build réussi)</mark></em></p><p id="b9283946-ee09-4bef-abed-2ff52bf8a394" class=""><code>docker image ls</code></p><p id="bdcfe00e-6223-4a4e-a59b-df16025a909d" class="">🥳 Vous devriez visualiser votre première image !</p><p id="c6955f7c-16f1-4890-8e2a-ed148f61538b" class="">😕 Cependant celle ci n’a pas de nom en dessous de <strong>REPOSITORY, </strong>il est indiqué <mark class="highlight-gray"><em>&lt;none&gt;</em></mark>, meme si l&#x27;ont peut relier cette image à son ID présent dans la quatrième colonne, le sujet nous demande que le nom de l’image porte le nom du container associé, ici <strong>nginx</strong>.</p><p id="ef945cf0-d830-4960-885a-da172d3f0de1" class="">Et l’ont peut faire cela ! Il suffit simplement de préciser quand on build l’image, son nom, grace au flag <code>-t</code></p><p id="d867ec2e-c636-4707-be35-100ab87bdf58" class="">Exemple : <code>docker build -t nginx .</code></p><p id="db6acf80-4c1c-4c18-b96d-27bd64a9da47" class="">
+</p><p id="8616f3d1-ee05-4217-9cd3-319ccfdb84f8" class=""><span style="border-bottom:0.05em solid">Démarrer une image </span><span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>(run)</em></mark></span><span style="border-bottom:0.05em solid">:</span></p><p id="ad7ead74-6457-4648-9682-c4e4d3955773" class=""><code>docker run &lt;image_name&gt;</code></p><p id="747eee61-688e-4651-8779-f43b786dbff6" class="">📌 Vous devrez indiquer le nom de votre image à run.</p><p id="e9037f23-7067-4f56-bf78-85818c72dfce" class="">👉 En précisant <code>-it</code> avant le nom de votre image, vous accéderez directement au terminal de votre container à son lancement.</p><p id="8adaf7fa-ead9-4140-93d4-201ddd9a43d4" class="">
+</p><p id="e98915dd-ffa5-45fe-b5b1-d2b6f30a17f9" class=""><span style="border-bottom:0.05em solid">Connaitre les containers actuellement lancé :</span></p><p id="7af8f523-4c99-4f97-bb93-9487df0136d7" class=""><code>docker ps</code></p><p id="876a02fa-d651-49b9-8acf-bc9c286c5009" class="">👉 Vous pouvez même obtenir les containers Docker stoppé en rajoutant le flag <code>-a</code></p><p id="26ffef43-c378-479a-8ea6-184535690268" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a52d8249-272e-4934-8a6f-64ccb92d3786"><div style="font-size:1.5em"><span class="icon">🧷</span></div><div style="width:100%">J’ai crée un <em><strong>mini script bash</strong></em> qui permet de build un container en faisant <code>docker build -t inception .</code> puis après avoir réussi, propose de le lancer avec <code>-it</code> , ce qui permet d’accéder directement à la console du container.                                                                           <p id="367ee1c2-8b4e-4667-9b92-8da6cbc5fe06" class="">Mettez simplement ce bout de texte dans un fichier <code>execute.sh</code> et exécutez le avec bash.</p><figure id="888a5614-50fd-4227-9178-bc42a01ce749"><div class="source"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/use.txt">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d7c6c85d-8a9e-46e3-8b31-2898d714aa14/use.txt</a></div></figure></div></figure><p id="177b53aa-a052-4974-a4c0-b9c35ced3270" class="">
+</p><hr id="31e6669c-7336-44f9-af57-1fb036cd1759"/><p id="19b39c48-1f29-4fe7-b547-9a03d1f190c1" class="">
+</p><p id="a9b0094a-57b6-48f2-8d04-34b97f24495a" class="">Nous sommes maintenant prêt pour tenter de lancer notre mini <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="863fb113-c8a1-4136-bc88-f8dbc231f520" class="">Commençons par <strong>build</strong> notre container.</p><p id="85bb846b-8d90-48fe-9437-9219c23a8eac" class="">Dans le dossier contenant le <mark class="highlight-blue"><strong>Dockerfile </strong></mark><strong>nginx</strong>:</p><p id="e13b6ecd-275a-49be-8ba1-8e213e90dab0" class=""><code>docker build -t nginx .</code></p><p id="2ea8eb1a-f8fe-445a-bc11-f1108f5041ed" class="">
+</p><p id="5c9f63dc-8ea9-44de-9eb0-3f6102d97bb6" class=""><span style="border-bottom:0.05em solid">Maintenant lançons notre </span><strong><span style="border-bottom:0.05em solid">container</span></strong><span style="border-bottom:0.05em solid"> que nous venons de </span><strong><span style="border-bottom:0.05em solid">build</span></strong><span style="border-bottom:0.05em solid">.</span></p><p id="6dbe1192-7c19-4e15-a50d-184b93aec81f" class="">Lancez: </p><p id="b566f837-1d36-4add-90d0-73a5fd5152cc" class=""><code>docker run -it nginx</code>     <strong> ❯  </strong><code>-it</code><strong> </strong>permet d’ouvrir le terminal du container à son lancement.</p><p id="c343e3a6-de41-44b1-85be-61a78b240772" class="">
+</p><p id="cac8f021-9b07-4d17-b9f1-7c861aacdbec" class="">
+</p><p id="cdb3d6e9-59af-47c2-91f1-29f02f85a122" class="">
+</p><p id="10c1c78b-516e-429d-83cf-db95e110cff6" class=""><strong>Bienvenue</strong> dans votre container !</p><p id="a51c36a1-fd05-4ef8-9098-b98b337e9610" class="">Pour <span style="border-bottom:0.05em solid">quitter</span> le terminal d’un<strong> container</strong>, c’est un classique, il faut taper ‘<code><strong>exit</strong></code>’</p><p id="60ae630b-e3c8-4140-bf4b-d654c17f977a" class="">
+</p><p id="fed757b9-d54f-47ef-b984-d0f3d48e777d" class="">Si vous faites un <code>ls</code> , vous verrez de suite :</p><pre id="c753be73-1f60-46d1-b5ee-8aaf4339b1ad" class="code"><code>bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+boot  etc  lib	 media	opt  root  sbin  sys  usr</code></pre><p id="aa55b84e-1a3e-432b-9a7f-f9f9506ed56d" class="">C’est le fameux <span style="border-bottom:0.05em solid">noyau</span> de <strong>Debian!</strong></p><p id="b6a800ff-ec53-47c4-a790-006beea80f75" class="">En soit, les fichiers permettant au système d’exploitation de fonctionner correctement.</p><p id="839e5f70-8203-45d4-8dbc-155ae50f5a34" class="">
+</p><p id="01bd00be-ed6a-43ac-be95-f666d382665d" class="">
+</p><p id="6fccdf46-a982-4641-b9ec-b67068f1bf41" class="">Maintenant vous êtes dans votre container, vous pouvez installer ce que vous voulez. </p><p id="dc6b6a8e-0ae1-4349-8630-f38ff2c8e68e" class="">Commençons par mettre à jour <strong><em>apt </em></strong><em>dans le terminal du container</em></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b8835be8-b655-442a-8a7e-e3866ae4dc38"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>APT</strong> est un utilitaire de ligne de commande permettant d&#x27;installer, de mettre à jour, de supprimer et de gérer les paquets deb sur Ubuntu, Debian et les distributions Linux associées.</div></figure><p id="968b0cd2-1dc4-4406-b3f5-2d98d89be3e7" class=""><strong>APT</strong> est donc un gestionnaire de paquet pour Debian, pour être certain que la version d’<strong>APT</strong> installé sur ce container connait les dernières versions des paquets, nous allons lui demander de vérifier les mises à jour en utilisant : <code>apt update</code> , si tout va bien APT devra répondre : <span style="border-bottom:0.05em solid"><strong>All packages are up to date.</strong></span></p><p id="fc95aa6a-c518-4bec-b2c3-a53491511eea" class="">Nous pouvons rajouter <code>apt upgrade</code> pour installer des éventuels mises à jour de paquets trouvées.</p><p id="44d6524d-660c-4ce2-ab25-299c4737dbb3" class="">
+</p><p id="4ce80b06-9b7b-4a25-b600-0fceb5cb776c" class="">
+</p><p id="218592c9-c3c6-4cec-8e24-96cd8d2d6918" class="">Maintenant que <strong>APT</strong> connait les dernières versions des paquets, nous allons lui demander de directement installer celui qui nous intéresse, <strong>nginx</strong>. </p><p id="61fa018b-993d-4e2a-9f0d-1a7624229d05" class="">Suffit de taper : <code>apt install nginx</code></p><p id="2d7e3d68-e21e-429b-be87-c2c26b44e98b" class="">
+</p><p id="a0fd58c3-c0f5-46bf-91b8-6f3e79ec2023" class=""><span style="border-bottom:0.05em solid">Top!</span> Nous voici désormais avec un container qui possède <strong>nginx</strong>. </p><p id="f5fd6cf7-1754-422b-a5e2-be37745c5233" class="">
+</p><p id="a50437d3-26c3-4f2b-907a-1b17b2380964" class="">Mais il se pose un problème, si nous fermons notre container, et que nous le rouvrons à nouveau, <strong>nginx</strong> à disparu ! 😩</p><p id="077c399c-7a1e-41c6-a1b1-a204979bc1a2" class="">Cela voudrait dire qu’il va falloir entrer à chaque ouverture du container dans le terminal pour l’installer de nouveau ? 😮‍💨</p><p id="e42e51cb-03d5-4991-96a9-2dabe580a677" class="">Heureusement non, et c’est la qu’intervient notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> 🤩</p><p id="c69d9e2c-349e-4662-a196-66aa4a89f6fc" class="">Rappelez vous, il existe un mot clef <mark class="highlight-blue"><strong>RUN</strong></mark> qui permet d’indiquer à Docker une commande à réaliser à la création du container.</p><p id="6cb82ea7-8b77-4cd3-a3a5-24c9e8da6c7e" class="">Nous pourrions donc tout simplement rajouter dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> : </p><p id="ccfe1507-4c27-4c04-9c50-79fdb78cfdd2" class=""><code>RUN apt install nginx</code> <strong>❯ installer nginx</strong></p><p id="af44a049-c257-4ce9-8265-f347f6f2d847" class="">
+</p><p id="df1c772c-acdc-4e33-9b1c-ff0acc432ebe" class="">Si vous tentez à nouveau un <strong>build</strong> de votre container en rajoutant cela, spoil, <strong><mark class="highlight-blue">Docker</mark></strong> indique cette erreur : <code>E: Unable to locate package nginx</code></p><p id="917db144-bc76-4c5f-884d-53a343cd143d" class="">Oui! Nous avons oublié de mettre à jour APT juste avant avec la commande <code>apt update</code> ! </p><p id="9b7e92a5-56ad-4dff-a226-918cf3cee4c4" class="">Rajoutons le juste avant, <code>RUN apt update</code></p><p id="c2113739-be6c-4e4b-a1f5-f2bd6cf53dcd" class="">
+</p><p id="3341684d-9d9e-48be-8d6f-905055aa0bc7" class="">Maintenant notre build va plus loin! Mais il y’a encore une <strong><mark class="highlight-red">erreur</mark></strong>…</p><p id="8552ad7c-638e-480d-b65b-88d3a651a80a" class="">Vous pouvez remarquer que l’avant dernière ligne indique : <code>Do you want to continue? [Y/n] Abort.</code></p><p id="1ab11ed0-695c-4392-8837-a706b7e5c257" class="">Hein? Mais oui je veux continuer ! Cependant quand <strong><mark class="highlight-blue">Docker</mark></strong> <strong>build</strong> un container, il n’y a aucun prompt permettant de répondre <mark class="highlight-teal"><strong>YES</strong></mark> à cette question…</p><p id="12007e0d-9e78-40dd-ab6b-133af2380724" class="">De toute façon l’idée d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> c’est de pouvoir créer votre projet sans vous demander votre avis en cours d’installation.</p><p id="c054da60-f380-465e-a9fb-44d94295ebba" class="">Comment faire ?</p><p id="9ee3dcc8-d6d8-41f0-a6d4-d4a2610ef0cf" class=""><strong>APT</strong> propose une option <code>-y</code> qui permet de répondre automatiquement <mark class="highlight-teal"><strong>YES</strong></mark> à ce genre de question lors de l’installation d’un package. </p><p id="803bd709-ffe6-468a-9107-7718d5e181d1" class="">Il serait donc une bonne idée de prendre l’habitude de le rajouter lors de l’ajout de ligne utilisant <strong>APT</strong>, sinon votre container ne pourra pas se créer.</p><p id="c0013f8e-8f3a-4f7c-84a2-0593b1596125" class="">Il suffit donc de rajouter un <strong>-y</strong> à la fin de la ligne qui concerne l’installation de <strong>nginx</strong> par <strong>APT</strong>.</p><p id="5b2a73c6-dc6d-4839-aed1-bd3e84a0b4f5" class="">Cela donne : <code>RUN apt install nginx -y</code></p><p id="32b6dce9-c34c-4a18-9c8b-d5a92f4d3125" class="">
+</p><p id="efb1a1b6-0b59-45ff-8030-c3ec4068d81f" class="">
+</p><p id="8dedab60-4546-4d40-94fe-87d90d1f0a8e" class="">Tentons de build à nouveau… Ça fonctionne ! </p><p id="88c9d62a-d7f9-431b-a951-4a4b9a9b0bf5" class="">Vous pouvez désormais rentrer dans votre container avec <code>docker run -t nginx</code> et vous retrouver à nouveau dans le container, mais cette fois l’installation de <strong>nginx</strong> est déjà effectué !</p><p id="7220c7b6-26bd-4603-88c9-02fe6bd754e5" class="">
+</p><p id="cd689d00-b8c2-4508-942f-79da7744cb20" class="">Histoire de pouvoir être à l’aise en accédant au terminal du container. je vais installer <strong>vim</strong> et <strong>curl</strong>. Libre à vous d’installer les packages qui vous semble utile : </p><p id="b90f817e-42d1-412a-892c-d7d620e72000" class=""><code>RUN apt install vim -y </code></p><p id="90b33496-7282-4cf9-a408-b91d565a8a2f" class=""><code>RUN apt install curl -y</code></p><p id="0b10d0a4-5a4c-4513-8a18-dae63712a6b2" class="">
+</p><p id="6f32cc7c-9695-4c6e-8066-c91e37993070" class="">Ok maintenant place au <strong>TSL</strong> !</p><p id="54e7c97f-1094-4c0d-9a26-906f08226442" class="">Nous allons créer un dossier, qui permettra de stocker le certificat et la clef pour une <mark class="highlight-teal"><strong>connexion sécurisée</strong></mark>.</p><p id="b2d6d6f4-93b2-4fbc-bee7-709bafdbde03" class="">Rajoutons : <code>RUN mkdir -p /etc/nginx/ssl</code> </p><p id="bb783bab-21a9-43f8-98db-aba2ca45580d" class="">
+</p><p id="05e16eb4-5319-45a5-97fe-de9085003c7b" class="">Il serait également important de télécharger l’outil principal pour la gestion/création de certificat SSL, <span style="border-bottom:0.05em solid"><strong>OpenSSL</strong></span></p><p id="98f47a34-c72d-44fd-a084-31a30eac7d03" class="">Pour cela, comme les autres packages, nous l’installons avec <strong>apt</strong>.</p><p id="0ffe84c1-83d4-4b8a-9e6c-92a5ddd90722" class="">
+</p><p id="8429cd1b-84c0-4fc7-b922-69da9151e6f3" class=""><code>RUN apt install OpenSSL -y</code></p><p id="459b805b-0269-4d52-8ce1-13e05d1434b8" class="">
+</p><p id="b7af140d-2291-4068-a99c-c8ee148f3870" class="">Ensuite, il va nous falloir générer un certificat <strong>SSL</strong> et oui nous utilisons les outils <strong>SSL</strong> afin de créer un certificat <em><strong>TSL/SSL</strong></em>.  </p><p id="bcd569e3-7052-49a8-9607-91f775b22677" class="">
+</p><p id="74c02371-5dcb-4a7c-bb59-0729e75886cc" class="">La commande est un peu longue, commençons par le mot clef <strong>openssl</strong> puis <strong>req</strong>.</p><p id="185f4062-2637-43db-a69f-8b8565f8192f" class="">
+</p><p id="f8330716-2cca-4f25-8615-bc58b3b10291" class=""><code>openssl req </code></p><p id="34946364-cef6-40d7-bcc9-32919f8dc653" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b43d393a-118d-4bfb-8c21-535420265e97"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La commande <strong>req</strong> crée et traite principalement des demandes de certificats au format PKCS#10. Elle peut en outre créer des certificats auto-signés.</div></figure><p id="f955f9d2-2801-460c-865f-071ac7a8acfc" class=""> </p><p id="73590ca7-3e85-431f-86c0-ba05ec4578a2" class="">Nous rajouterons ensuite le mot clef <em><strong>-x509</strong></em> pour préciser le type du certificat.</p><p id="c53310ec-a694-4694-8610-7eb3c05a9fd0" class="">
+</p><p id="c1bb83ba-2ad5-409c-aa48-d0ae888ddbb7" class=""><code>openssl req -x509</code></p><p id="ca1e90c7-0685-4804-9d8b-4d2abbcd27a1" class="">
+</p><p id="bbaa976e-2b75-4ce6-a921-74b74ff445dc" class="">Maintenant si nous créons notre certificat, OpenSSL nous demandera un mot de passe, et souvenez vous, si l’ont demande quelque chose a saisir dans le démarrage du container, celui ci ne va pas pouvoir se <strong>build</strong>. Il faut donc éviter cela à tout pris ! </p><p id="ea47f42a-cba9-433e-9047-d0b4f4b6a51e" class="">Heureusement, <strong>OpenSSL</strong> à prévu le coup, avec l’option <strong>-nodes</strong>, notre clef privée se retrouvera simplement sans mot de passe.</p><p id="413a4f77-00f3-4d86-b66b-c7240be16680" class="">
+</p><p id="26d2ec7b-f8ef-409b-acaf-9e076291f8b4" class=""><code>openssl req -x509 -nodes</code></p><p id="07daa8a1-cebc-4c99-947f-020af3b2a9b9" class="">
+</p><p id="ab0797c2-b2f2-4473-a01d-422e4304ccd8" class="">Maintenant il faut indiquer à OpenSSL ou l’ont souhaite stocker le certificat et la clef de notre SSL en rajoutant les options <strong>-out</strong> et <strong>-keyout</strong></p><p id="ff880e52-6c5a-424d-9991-f1ca1bc652cd" class="">
+</p><p id="21e3a161-389f-4688-9a27-75b8405f62be" class=""><code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key</code></p><p id="7d6f8b05-6589-47f6-8926-f344566eaa41" class="">
+</p><p id="b8a67a4e-e288-4e71-9efd-ae1c3524480d" class="">Maintenant si nous lançons cette commande nous risquons d’avoir un <mark class="highlight-red"><strong><em>prompt</em></strong></mark> qui requiert certaines informations pour le certificat. </p><p id="c4cc067f-0457-461c-9bc3-3c57f1e46b3e" class="">Heureusement, OpenSSL à encore prévu le coup et nous permet de les préremplir en rajoutant une option appelé <code>-subj</code> </p><p id="caaec85b-3ad0-49d8-bc02-aa3f5c380661" class="">
+</p><p id="e957f572-d6f5-4656-9dbc-2c3dc848f162" class=""><code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj &quot;/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jcluzet.42.fr/UID=jcluzet&quot;</code></p><p id="67465ea9-ea13-49ad-a338-34d36bb4fd6f" class="">
+</p><p id="dee06628-4d1e-4f02-836d-16649c4b7a77" class="">Plus qu’à rentrer cela précédé d’un <code>RUN</code> dans notre <mark class="highlight-blue"><strong>Dockerfile.</strong></mark></p><p id="08960cd3-3054-4168-a901-a7162b5631af" class="">
+</p><p id="24a7d2de-a5bf-4fa0-bd7c-667cf8777be2" class=""><mark class="highlight-teal"><strong>Bravo!</strong></mark> Votre clef et votre certificat TSL est désormais automatiquement créé au démarrage de votre <span style="border-bottom:0.05em solid"><strong>container</strong></span> !</p><p id="db6246b4-39b1-48ea-bc4a-8e037e396777" class="">
+</p><hr id="48ed5abf-720a-4499-8d68-4d9054af1ac9"/><p id="26003dc7-3c1a-4f65-981a-cb24f6dc91f4" class="">
+</p><p id="30012741-d5c6-4ab7-9dd7-343c04b10c2a" class="">Maintenant je vais créer un dossier qui nous permettra de stocker les fichiers de config de nginx. </p><p id="49136450-4041-4d11-843e-199a5ebadf24" class="">
+</p><p id="936b8295-dfcd-4238-8b99-b7429d7dc671" class=""><code>RUN mkdir -p /var/run/nginx</code></p><p id="231c7c53-91cc-4fd3-90bd-f09de1a0a537" class="">
+</p><p id="42336da2-d02a-47f7-b791-10a6a3527a31" class="">Désormais il nous faudrait modifier le fichier de <em>configuration</em> de <strong>nginx</strong> comme on le souhaite, pour cela nous pourrions faire des <strong>redirections</strong> de certaines phrase dans le fichier de <em><strong>config</strong></em>, mais nous allons plutôt utiliser le mot clef <mark class="highlight-blue"><strong>COPY</strong></mark> du <mark class="highlight-blue"><strong>Dockerfile</strong></mark>, qui à l’air fait pour ça.</p><p id="63b34a84-1b66-43b2-ae7f-2f1c9a292832" class="">
+</p><p id="4c7a7c55-b637-49a8-b4e8-e24826048e4a" class="">Nous allons donc prendre le fichier de <em><strong>config</strong></em> de <strong>nginx</strong> de base et nous le modifierons après. Il se trouve dans <code>/etc/nginx/nginx.conf</code> </p><figure id="a2751508-fce8-4c50-8a94-d2fab042bcc0"><div class="source"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/nginx.conf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97aeef6-ffc4-4d2e-835d-36986aacdff5/nginx.conf</a></div></figure><p id="a708826f-3b69-499f-a209-e423bc946b57" class="">
+</p><p id="b597bcfa-9617-4ab8-a627-ca65ac487b42" class="">Nous allons le mettre dans un dossier <code>conf</code> , lui même dans le dossier <code>nginx</code> <mark class="highlight-gray"><em>(pour respecter la structure indiqué dans le sujet)</em></mark>.</p><p id="fed77f91-4a74-4bae-9265-ca588d917c65" class="">
+</p><p id="cea374ca-5b29-4713-9de3-03d1e6ce76df" class="">
+</p><p id="7d1ff4e0-ec97-4da1-9397-0052765977d8" class="">et en rajoutant la ligne :</p><p id="08f06109-2002-4643-8322-1e6a679365d4" class=""><code>COPY conf/nginx.conf /etc/nginx/nginx.conf</code></p><p id="752710c9-2694-4021-a9f5-3e4ddf77ced3" class="">Le fichier de configuration de <strong>nginx</strong> devrait être remplacé par le notre au démarrage du container, faisons un test en rajoutant la phrase <mark class="highlight-gray"><em>“yes we can”</em></mark> en commentaire au début de notre fichier <em>nginx.conf</em> dans le dossier <code>conf</code></p><p id="0da4ae60-0583-4f8f-87b8-6487c7bab716" class="">
+</p><p id="0dbd54c7-af5a-4883-9941-648f4ecbdd01" class="">Si tout va bien, en <em><strong>buildant</strong></em> le container, et en le <strong>lancant</strong>, vous devriez voir votre fichier <em>conf</em> de <strong>nginx</strong> <span style="border-bottom:0.05em solid">modifié.</span></p><p id="7c05853f-683c-4101-bb70-7a46e92e1ce8" class="">
+</p><p id="62004b0c-657f-4054-b2b0-981c9d224eac" class="">Ensuite nous pouvons rajouter le mot clef <strong><mark class="highlight-blue">EXPOSE</mark></strong>, qui, comme précisé au début du tutoriel, permet d’exposer un <strong>port</strong>, nous exposerons le <span style="border-bottom:0.05em solid"><strong>443</strong></span>, tout simplement parce que c’est le seul autorisé par le <strong>sujet/schéma </strong>fourni. </p><p id="a462752e-d5fa-4c22-8c27-44732a989f81" class="">
+</p><p id="4929208d-df57-4f5b-b1f6-d54e02db6de4" class="">Nous rajoutons tout simplement :<code>EXPOSE 443</code> dans notre <strong><mark class="highlight-blue">Dockerfile</mark></strong></p><p id="451c4064-8e1f-4eda-821a-81ff3241d1e1" class="">
+</p><p id="cc970c13-4ffc-47ba-ba16-88b5218d8570" class="">
+</p><p id="03743db7-b5e9-4ae4-b731-db990f032d80" class="">Avant de lancer <strong>nginx</strong>, il faudrait indiquer à <strong>nginx</strong> la configuration qu’on souhaite utiliser dans le cadre <span style="border-bottom:0.05em solid">d’Inception</span>.</p><p id="93e7aa36-0c25-4f25-8cf5-0449c8776658" class="">
+</p><h2 id="9b68dd34-b257-4034-aeab-6f3bf968391c" class="">Le fichier de configuration de nginx:</h2><p id="25eb6c81-f391-4a6b-ac27-9b590113fe5c" class="">
+</p><p id="9dc16699-5362-4bac-a35d-76592ed88eca" class=""><a href="https://ubiq.co/tech-blog/nginx-ssl-configuration-step-step-details/">Cette page</a> nous aide à paramétrer <strong>nginx</strong> pour le <strong>ssl</strong></p><p id="b69d5626-9fe1-4510-8978-98f6b881b267" class="">On y voit cette configuration :</p><p id="4594f880-46ca-4ab8-b031-6b12b24f950f" class="">
+</p><pre id="91bb8989-5f15-4127-a6e8-061b4c23a5bd" class="code code-wrap"><code>server {
+    listen 443;       ❯ Depuis la version 1.12 de nginx, il faut préciser ssl.
+    ssl on;           ❯ Inutile depuis la version 1.12
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;  ❯ Gardons TLSv1.2 &amp; TLSv1.3
+    ssl_certificate /etc/nginx/ssl/bundle.crt;  ❯ Indiquons notre certificat
+    ssl_certificate_key /etc/nginx/ssl/private.key;  ❯ et notre clef
+    ...
+}</code></pre><p id="ae307bca-9333-4ef7-9e39-392027c41105" class="">
+</p><p id="d49d04af-f584-4dd9-9493-84f2bc0b0c3f" class="">Le fichier de <strong>config</strong> devient donc :</p><p id="724000e8-257e-4a7f-936e-aa54967ca449" class="">
+</p><pre id="1e25501e-d9bd-4a7b-a9d5-90a863a28006" class="code code-wrap"><code>server {
+    listen 443 ssl;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_certificate /etc/nginx/ssl/inception.crt;
+    ssl_certificate_key /etc/nginx/ssl/inception.key;
+    ...
+}</code></pre><p id="b18582a6-beb2-4162-a5b8-2b7868c5fddd" class="">
+</p><p id="1443c2f7-3fdd-4fba-af67-51300c45eb42" class="">Nous avons maintenant la partie <span style="border-bottom:0.05em solid"><strong>TLS</strong></span> qui fonctionne avec <strong>nginx</strong>.</p><p id="cbad8b92-a4e0-435d-b02b-d6a0d97b8092" class="">Je vais préciser le dossier d’accueil en rajoutant <code>root /var/www/html;</code> </p><p id="3ab3dba4-dc73-44d2-93aa-ebc917a1ec54" class="">Je vais également préciser <span style="border-bottom:0.05em solid">quel</span> page afficher en premier, dans le cadre de <strong>wordpress</strong> il faut indiquer <strong>index.php</strong>, mais je vais également en rajouter d’autres qui me semblent importantes.</p><p id="3db7e49e-3418-4dc1-a59a-a581c2b69f73" class=""><code>index index.php index.html index.htm;</code></p><p id="7bbd919d-5832-43cf-bf98-496eb042e759" class="">
+</p><p id="dcf872c7-9633-4adf-b581-c2e1bf540d50" class="">
+</p><p id="29ac8ddd-21b0-4f87-8ced-e336cd82f704" class="">Vu que la connexion se fera depuis localhost, je l’indique en <strong>server_name :</strong></p><p id="d4d9a6cf-ff1c-420e-8f62-3a1b1f9c556a" class=""><code>server_name localhost;</code> </p><p id="4b320348-5366-4a80-ab6c-a6ded59a61f2" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4f71328c-185d-4b87-9cfd-8712c731fb86"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Il faudra changer <code><a href="http://localhost">localhost</a></code> par l’IP <code>login.42.fr</code></div></figure><p id="07b00f86-cce4-4849-86a0-bc4f5422de48" class="">
+</p><p id="31f10dff-73c5-4801-b39d-a904000e4670" class="">Le fichier de config ressemble maintenant à cela:</p><p id="9f8026ca-3ae0-41b8-a1db-aa2920740deb" class="">
+</p><pre id="97793751-aa9b-428d-901a-5f5b2422187d" class="code"><code>server {
+		#SSL/TLS Configuration
+    listen 443 ssl;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_certificate /etc/nginx/ssl/inception.crt;
+    ssl_certificate_key /etc/nginx/ssl/inception.key;
+
+		#root and index and server_name
+		root /var/www/html;
+		server_name localhost;
+		index index.php index.html index.htm;
+}</code></pre><p id="26330da0-99fb-4609-adca-49833aa787db" class="">
+</p><p id="43a84177-2da0-4bdd-be72-0df4b49e58b0" class="">Maintenant il faut rajouter des règles sur les locations pour WordPress.</p><p id="bf0dfa5c-8d4a-44f4-a48d-fcb0be0d9320" class="">Déjà il faut demander à nginx de renvoyer n’importe quel requete que nous ne connaisons pas sur un 404 error.</p><p id="76e05d90-ea00-4051-9e89-98c84a62eb57" class="">Un <a href="https://stackoverflow.com/questions/57561236/how-nginx-process-404-fallback-in-try-files">topic sur stackoverflow</a> explique bien cela, nous rajoutons la règle:</p><p id="74dd3f00-c747-4c9e-b3d1-b7543d423772" class="">
+</p><pre id="56b06301-5bfd-4ed6-ad55-05af3a1e3490" class="code"><code>location / {
+				try_files $uri $uri/ =404;
+}</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f15ec597-27d9-40fd-bb83-2daf56d055af"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour tout les fichiers, nous essayons d’ouvrir le fichier renseigné, si c’est un échec nous renverrons <strong>404</strong>.</div></figure><p id="2f60a1fc-71a1-4e95-a06c-7a60307604cd" class="">
+</p><p id="59221414-7738-4c09-9552-44172467afa9" class="">Il nous manque à installer PHP pour pouvoir gérer les requêtes <strong>PHP</strong> de <strong>WordPress</strong>.</p><p id="7769be07-0da4-4b38-8dfa-b8df3647e138" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ce5cc9cb-666b-496e-8cab-4e5b95e00311"><div style="font-size:1.5em"><span class="icon">🚫</span></div><div style="width:100%">Le sujet indique que le PHP doit être installé sur le container de WordPress et non de nginx. </div></figure><p id="fa78f80d-acba-4ec5-8e89-f9e084db548c" class="">
+</p><p id="c82a0ea0-dd50-4e80-9f14-c37d69bc3f98" class=""><span style="border-bottom:0.05em solid">Pas de soucis !</span> Nous allons donc simplement préciser comment gérer le <strong>php</strong> à <strong>nginx</strong> et lui indiquer ou faut-il qu’il renvoi notre code <strong>php</strong>.</p><p id="3bd3cda2-1938-42d1-8dd4-751764f0ae32" class="">
+</p><pre id="b4fcad91-0de0-40ac-b14a-86711bc7871a" class="code"><code>location ~ \.php$ {                             # Pour toutes les requetes php
+					include snippets/fastcgi-php.conf;
+					fastcgi_pass wordpress:9000;          #Comment renvoyer les requetes php sur le port 9000
+}</code></pre><p id="d6528404-cf97-4aff-a3a4-9a7a1a241b89" class="">
+</p><p id="8ee70be7-71a2-4c3a-b568-a0f63122a5da" class="">
+</p><p id="b3668714-9ccc-472b-89d7-a0ee9be023b7" class="">Maintenant je vais simplement rajouter dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> une commande <code>chmod</code> afin de s’assurer que nous aurons les droits sur ce dont nous avons besoin.</p><p id="322b52a6-aa5b-49d3-ae2e-b7554d6bb670" class="">
+</p><p id="e5b8d754-da0a-4193-b624-a9c6677b88b9" class=""><code>RUN chmod 755 /var/www/html</code> <mark class="highlight-gray">(notre root principal)</mark></p><p id="faf491d9-bd22-4c7c-bef8-1625e9941a7f" class=""><code>RUN chown -R www-data:www-data /var/www/html</code> <mark class="highlight-gray">(l’utilisateur principal)</mark></p><p id="e9694aa8-2dd1-4984-a5e2-6516b90b3686" class="">
+</p><p id="467a91b4-e482-432f-a8f8-5dbdd606999c" class="">Maintenant il ne reste plus qu’à lancer nginx, nous utiliserons le mot clef <code><strong>CMD</strong></code>  : <code>CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code> </p><p id="7272e57f-4f88-4d00-bb5e-8e4828405480" class="">Cela lancera <strong>nginx</strong> en premier plan pour que le container ne se stop pas.</p><p id="86274cd7-571a-4d65-888b-01398f8770cd" class="">
+</p><p id="7217696c-55a4-4eeb-8a1c-3783527bf191" class="">Vous pourriez voir en allant sur <a href="http://localhost">localhost</a>, en utilisant <strong>https</strong> <mark class="highlight-gray">(car vous n’avez pas ouvert le </mark><mark class="highlight-gray"><strong>http</strong></mark><mark class="highlight-gray">),</mark> voir la page d’accueil de nginx, mais il faudrait aussi changer le <strong>root</strong> du fichier de configuration et enlever le <code>wordpress:9000</code> pour le php car il n’existe toujours pas.</p><p id="fcda5ca5-cd27-4d04-9957-36a9f91b4f21" class="">
+</p><p id="d2f5e3cc-960a-430c-a355-2c83c2681017" class="">
+</p><p id="843c61c4-ccee-498f-8f8d-63204d783fce" class="">
+</p><p id="9b80c49a-fcc7-4d2c-8cc3-690d53da7516" class=""><span style="border-bottom:0.05em solid"><strong>Un container de terminer! </strong></span></p><p id="56a21988-8907-445d-b593-2a8908baf81a" class="">
+</p><p id="e80a850b-a2f5-4bc6-9cf8-22e3593056fe" class="">Par quel container poursuivre ? </p><p id="16a677cf-fa1a-400b-bc0d-4c805a91784f" class="">Nous aurons besoin de <strong>MariaDB</strong> pour installer <strong>WordPress</strong>.</p><p id="115d3e96-5fd1-49c6-b95c-c7eb2d4bdf71" class="">Lors de l’installation de <strong>WordPress</strong>, celui ci requiert un serveur web <mark class="highlight-gray">(nginx)</mark>, et une base de données, ici <strong>MariaDB</strong>.</p><p id="2b806562-198a-46b1-8f36-2d4b868e62de" class="">Il serait donc plus judicieux de tout comprendre sur les bases de données et commencer par créer ce container. </p><p id="008f7856-0131-46ec-bd75-7d0dcf56f40e" class="">
+</p><h2 id="0bc41f4e-5d46-43f1-87fe-1e17d591c19d" class="">4. Container MARIADB :</h2><p id="56846519-549c-4142-9303-38f6c4e75c05" class="">
+</p><p id="456a1d4c-6a94-4278-9763-fe900e2ca920" class=""><strong>MariaDB</strong> est un système de gestion de base de données édité sous licence GPL. Il s&#x27;agit d&#x27;un embranchement communautaire de <strong>MySQL</strong> : la gouvernance du projet est assurée par la fondation <strong>MariaDB.</strong></p><p id="3c7b37ce-76c9-4bb3-a5c7-c28190d6a321" class="">
+</p><p id="1f029ab6-e9cf-4d38-b84d-daf8acccc5f5" class="">En gros, <strong>MariaDB</strong> est quasiment une copie de <strong>MySQL</strong>, mais pourquoi ?</p><p id="88378188-9624-4478-9eaa-c6b37258d318" class=""><strong>MySQL</strong> étais au début totalement <span style="border-bottom:0.05em solid">open-source</span>, puis il à été racheté par <strong>Oracle</strong>.</p><p id="7de9a52f-1c8e-49fe-a2ce-c65ff1abf0e7" class="">Depuis, plusieurs organismes s’inquiètent de la possibilité qu’à <strong>Oracle</strong> de rendre <strong><mark class="highlight-red">payant</mark></strong> son logiciel.</p><p id="e8e83320-0f37-49d7-8842-c15026916754" class="">Pour empêcher cela, la fondation <strong>MariaDB</strong> crée une version quasi-identique à MySQL, mais totalement <mark class="highlight-teal"><strong>open-source</strong></mark>. </p><p id="18e17a8c-4c01-4c22-a8d5-e233dcdce336" class="">
+</p><p id="619475e8-1828-44ea-9403-bb2eb0e2b180" class=""><mark class="highlight-yellow_background">Le fonctionnement d’une base de données comme MySQL : </mark></p><p id="91240fa5-f5b7-43b7-83c2-f83070f34e5e" class="">La gestion des données est basée sur un modèle de base de données basé sur des <span style="border-bottom:0.05em solid">tableaux</span>. Toutes les données traitées sur <strong>MySQL</strong> sont stockées dans des tableaux pouvant être <span style="border-bottom:0.05em solid">reliés les uns aux autres</span> via des clés, en voici un exemple:</p><p id="f9eef384-e0cf-4f51-861d-fdcc56af5520" class="">
+</p><figure id="d08c1a89-24a3-4bc1-8e0b-2e8a159a8f37" class="image"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/mysqlexemple.png"><img style="width:933px" src="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/mysqlexemple.png"/></a></figure><p id="a17c86bd-a594-4d42-ace0-46204ea4a148" class="">
+</p><p id="ddd1fb39-a75d-44af-85cc-c9d855415c5e" class=""><a href="https://www.malekal.com/installer-mysql-mariadb-sur-debian-10/">Ce tutoriel</a> indique parfaitement comment créer une base de données avec <strong>MariaDB</strong> sur <span style="border-bottom:0.05em solid">Debian</span>.</p><p id="004d79a5-8974-45c0-9c14-519866755c6a" class="">
+</p><h2 id="67aafb90-fdc0-4a37-82cf-33be5d150790" class="">Tutoriel pour utiliser MySQL/MariaDB:</h2><p id="483d3b4b-3f36-4d40-8836-b197bef85b7b" class="">
+</p><p id="95f4de20-846b-45bd-a397-b5305d4a3c52" class="">Pour commencer et pouvoir faire vos tests aussi de votre coté, nous allons créer un <strong><mark class="highlight-blue">Dockerfile</mark></strong> minimum pour <strong>MariaDB</strong>, si vous vous souvenez de ce qu’on a fait pour le début de <strong>nginx</strong>, l’ont a simplement besoin de commencer par d’écrire </p><p id="62af0be2-afdf-48af-bda3-05eadd1ee82a" class=""><code>FROM debian:buster</code></p><p id="fb0ca6f0-dee6-4bcb-b6fa-f32272525dda" class="">À partir de la, on peut <strong>build</strong>, et lancer le container en rentrant dans son terminal <mark class="highlight-gray">(remontez plus haut pour retrouver comment si besoin)</mark></p><p id="16da35c5-14ed-4141-9ce9-74cfc75f1638" class="">Maintenant l’ont se retrouve dans notre container et nous pouvons y effectuer nos commandes tests.</p><p id="8afa076c-ab95-40d2-b204-e36a2f358824" class="">
+</p><p id="bb99f40d-c4b0-4ab6-99d9-f006042dc43f" class="">Commençons par le fameux, essentiel, <code>apt update -y</code></p><p id="7ba549ea-bfca-41ac-be5d-7b5c71ccdd33" class="">Rajoutons aussi le <code>apt upgrade -y</code></p><p id="a3be07ea-8c4a-4254-9893-5cce664a5352" class="">Maintenant que <strong>APT</strong> contient des dépendances à jour, nous pouvons installer <strong>mariadb.</strong></p><p id="cbecafec-bce5-4889-96d0-ea429bf6d0c8" class="">
+</p><p id="74987426-aa5a-421f-92fd-84249652788d" class="">La version 10.3 de <strong>MariaDB</strong> étant la plus commune, nous pouvons l’installer en utiliser <strong>apt</strong>.</p><p id="45425a30-a56c-447e-a9f6-ba4662036c40" class="">
+</p><p id="da868933-0d6a-4771-8d57-35b8c3ca14b8" class=""><code>apt-get install mariadb-server -y</code></p><p id="4cb9716e-7b89-4a61-be2a-d7266adc9d75" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="efa858ee-3c7c-4a72-ada8-7441ddd997ec"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pensez au -y, sinon docker aura du mal à <mark class="highlight-blue"><strong>build</strong></mark> votre container car il attendra la confirmation du <strong><em>Y/n</em></strong> …</div></figure><p id="7364909f-5d48-47e7-b7ab-9eec6c407e59" class="">
+</p><p id="8b439f97-c351-4219-9c67-684ddffa4ab1" class="">Maintenant, rendons visite au fichier de configuration de MySQL, appelé <code>50-server.cnf</code> et se trouvant dans <code>etc/mysql/mariadb.conf.d/5.cnf</code> </p><p id="9e3de1dd-cf5f-4921-9221-b796d86aa1bf" class="">Voici à quoi ressemble le fichier de base :</p><pre id="5a0820a4-7817-4ab0-9ba1-c2ca97b083d2" class="code"><code># The MariaDB configuration file
+#
+# The MariaDB/MySQL tools read configuration files in the following order:
+# 1. &quot;/etc/mysql/mariadb.cnf&quot; (this file) to set global defaults,
+# 2. &quot;/etc/mysql/conf.d/*.cnf&quot; to set global options.
+# 3. &quot;/etc/mysql/mariadb.conf.d/*.cnf&quot; to set MariaDB-only options.
+# 4. &quot;~/.my.cnf&quot; to set user-specific options.
+#
+# If the same option is defined multiple times, the last one will apply.
+#
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
+
+#
+# This group is read both both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+
+# Import all .cnf files from configuration directory
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/</code></pre><p id="ddff62fc-6708-4340-802a-d052201a2d5a" class="">
+</p><p id="b8ee168a-ecde-445d-a1a6-3a45dd6ad29d" class="">Ok et maintenant si on <em>enlève</em> les commentaires ?</p><pre id="bd2df2a8-9460-4770-8990-303f8aac2048" class="code"><code>[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/</code></pre><p id="e9d451e0-696d-4f89-81d0-e672dce71ef2" class=""> </p><h3 id="460af361-2d31-4ff9-a354-d8bce89daf4e" class="">Le fichier de <span style="border-bottom:0.05em solid">configuration</span> de MariaDB:</h3><p id="a8de2d0f-7d53-4231-a46c-775aa0187f02" class="">
+</p><p id="3f4ee9b7-48a5-4dad-a340-44ffa72c8406" class="">Ok c’est donc l’essentiel du fichier de <span style="border-bottom:0.05em solid">config</span> de base, sauf que nous, nous n’avons pas besoin de cette partie qui concerne le côté client. </p><p id="4baefd6f-e05c-4f09-a493-3bfe64ced844" class="">Cependant c’est ici que nous pouvons préciser à <strong>MySQL</strong> sur quel port communiquer, indiqué par le sujet, c’est le <strong>3306 📡</strong></p><p id="30ce4b45-c13b-4370-96c3-586908e35e0e" class="">L’ont rajoute les crochets <code>[mysqld]</code> dans le fichier pour indiquer à quel catégorie va suivre la configuration suivante (c’est comme cela que fonctionne le fichier de configuration de <strong>MySQL</strong>)</p><p id="323f9edc-073a-4873-baf9-82718a2cea4e" class="">Après, l’ont précise également que toutes les ip du réseau peuvent se connecter, pour cela c’est la ligne <code>bind_address=*</code> , qui en gros veut dire, <code>bind_address=XXX.XXX.XX.XX</code></p><p id="6417b27c-1969-443a-a71b-193eb14bc696" class="">L’ont peut également lui préciser notre dossier qui stockera notre base de données avec <code>datadir=/var/lib/mysql</code></p><p id="86061093-55f4-4a38-9096-13624194f4b5" class="">Je rajoute l’utilisateur avec <code>user=mysql</code></p><p id="fc604116-970b-421d-aaf0-67a5f0dd414d" class="">Je ne suis pas sur que ce soit obligatoire car c’est le chemin de base, mais je précise également ou MySQL peut trouver la <strong>socket</strong> pour communiquer avec : <code>socket = /run/mysqld/mysqld.sock</code> </p><p id="40587167-4b8b-4a85-8dde-c878c3a44138" class="">
+</p><p id="9c81042d-b2f0-472c-a60e-ea4b9386c3c3" class=""><strong><span style="border-bottom:0.05em solid">Ok good ! </span></strong></p><p id="2c95b79d-776b-421e-bbc0-c5573ff90656" class="">
+</p><p id="cb5713cf-9fe4-4d9a-9d79-aa1dcc6078fe" class="">Notre fichier de <span style="border-bottom:0.05em solid">configuration</span> devrait donc être :</p><pre id="1f279d11-396b-41a7-8e61-85540a85c1dc" class="code"><code>[mysqld]
+datadir = /var/lib/mysql
+socket  = /run/mysqld/mysqld.sock
+bind_address=*
+port = 3306
+user = mysql</code></pre><p id="c5c51e51-43b7-4931-9624-12ad52a7f328" class="">
+</p><p id="7b2eb343-675a-4b88-b9c5-0865f716c301" class="">Maintenant, il faut enregistrer ce fichier dans notre dossier, dans un dossier <code>conf</code> comme le demande la structure du projet, je lui donne le même nom, <code>50-server.cnf</code>.</p><p id="98944025-72d6-4c03-9f40-73e87a0536f6" class="">Puis reste à demander au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> de le copier au bon endroit pour le remplacer.</p><p id="62b77808-ade2-4c28-b65a-ac8351011fd4" class="">
+</p><pre id="15e0614e-c324-4a19-a4d3-29b3d6f5302a" class="code"><code>COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf</code></pre><p id="334a0dbd-1440-4b74-a0e7-9bb5a1494bdc" class="">
+</p><p id="ac478254-5238-4b33-b8a5-297a0e5e8508" class="">Maintenant que MySQL est correctement <mark class="highlight-teal"><strong>installé</strong></mark> il faut créer une <strong>database</strong> et un <strong>utilisateur</strong> associé.</p><p id="2651a57b-eb58-4d0c-8262-e051a6cfe236" class="">
+</p><p id="e55d9515-2d98-4575-8680-958596126760" class="">Pour cela je vais passer par un script que je vais demander au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> d’exécuter.</p><p id="c668bbf7-b6fb-41a4-be92-ab345397e8ba" class="">
+</p><p id="fb3d9f62-f6f5-4e09-8452-c097c8f366d4" class="">Ce <span style="border-bottom:0.05em solid">script</span> doit créer avec mysql le système de table, grâce à la commande <code>mysql -e</code></p><p id="8f3fb161-fa4b-4695-b759-cbdc4f704417" class="">
+</p><p id="497c9fb5-8745-410d-b333-1220434af6fe" class="">Dans ce script nous pouvons d’abord <mark class="highlight-teal"><strong>démarrer</strong></mark> mysql, sans quoi il sera difficile de le configurer. </p><pre id="500d5526-31f7-46e2-aa0b-c63182f98876" class="code"><code>service mysql start;</code></pre><p id="5eaf38b7-a4c9-415e-be08-d879b4338afa" class=""><strong>❯ La commande </strong><span style="border-bottom:0.05em solid"><strong>service</strong></span><strong> permet de démarrer mysql avec la commande associé.</strong></p><p id="1fb818a5-1977-4051-8353-1a222c69339c" class="">
+</p><p id="0f343083-2994-4e5c-b4e1-76f34b713c03" class="">Ensuite il faut créer notre table!</p><pre id="94127b3a-a0a6-4d29-aae0-2fbfe66150b0" class="code"><code>mysql -e &quot;CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;&quot;</code></pre><p id="38d8d3b1-4c09-47a5-adaf-62ee50b5f56a" class=""><strong>❯ Je demande de créer une table si elle n’existe pas déjà, du nom de la variable d’environnement </strong><mark class="highlight-yellow"><strong>SQL_DATABASE</strong></mark><strong>, indiqué dans mon fichier </strong><span style="border-bottom:0.05em solid"><strong>.env</strong></span><strong> qui sera envoyé par le </strong><mark class="highlight-blue"><strong>docker-compose.yml</strong></mark><strong>.</strong></p><p id="9fb4c917-400a-4caa-ac5a-a2a960a7f0be" class="">
+</p><p id="09e80eed-b996-416e-a76d-ffd71c51e0ea" class="">Maintenant que la table est créée, je vais créer un utilisateur qui pourra la manipuler.</p><pre id="935d1f0f-3c09-42a8-908c-2743c7fa31d3" class="code"><code>mysql -e &quot;CREATE USER IF NOT EXISTS \`${SQL_USER}\`@&#x27;localhost&#x27; IDENTIFIED BY &#x27;${SQL_PASSWORD}&#x27;;&quot;</code></pre><p id="6b8aad94-0d16-424c-a7b4-ec56f5248c70" class=""><strong>❯ Je crée l’utilisateur </strong><mark class="highlight-yellow"><strong>SQL_USER</strong></mark><strong> s’il n’existe pas, avec le mot de passe </strong><mark class="highlight-yellow"><strong>SQL_PASSWORD </strong></mark><strong>, toujours à indiquer dans le </strong><span style="border-bottom:0.05em solid"><strong>.env</strong></span></p><p id="d2ac75cf-c2c6-45d5-80fc-8e56ac439834" class="">
+</p><p id="36ff3830-e0ce-4be3-8876-535da8807a74" class="">Maintenant je vais donner tout les droits à cet utilisateur.</p><pre id="cd576499-b998-4901-b341-1acc01ab7575" class="code"><code>mysql -e &quot;GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@&#x27;%&#x27; IDENTIFIED BY &#x27;${SQL_PASSWORD}&#x27;;&quot;</code></pre><p id="f63f504c-4fb2-498f-bb92-8f8fd53b85ff" class=""><strong>❯ Je donne les droits à l’utilisateur </strong><mark class="highlight-yellow"><strong>SQL_USER</strong></mark><strong> avec le mot de passe </strong><mark class="highlight-yellow"><strong>SQL_PASSWORD</strong></mark><strong> pour la table </strong><mark class="highlight-yellow"><strong>SQL_DATABASE</strong></mark></p><p id="402de3af-6ee5-4138-b837-02c15cbf2f13" class="">
+</p><p id="9d2051dc-9893-4c7f-85f4-73bd517af27f" class="">
+</p><p id="27ca5f3f-2232-463f-aa56-9be25f7b7b5a" class="">Maintenant je vais modifier mon utilisateur <strong>root</strong> <del>avec les droits </del><del><a href="http://localhost">localhost</a></del> avec cette commande:</p><pre id="c2867051-6bca-430b-b23a-f59a5cfacd8e" class="code"><code>mysql -e &quot;ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;${SQL_ROOT_PASSWORD}&#x27;;&quot;</code></pre><p id="6b5d4603-3ab5-44a5-9b9d-eec6a4ca36a9" class=""><strong>❯ Je change les droits root </strong><del><strong>par localhost</strong></del><strong>, avec le mot de passe root </strong><mark class="highlight-yellow"><strong>SQL_ROOT_PASSWORD</strong></mark></p><p id="b1510ecb-7a9f-4bb5-8689-380d59137d8c" class="">
+</p><p id="da04873b-f9d5-4590-96b5-ab1bffb06018" class="">Plus qu’à rafraichir tout cela pour que MySQL le prenne en compte.</p><pre id="3c855b08-ea0c-4508-8135-b62a600971d4" class="code"><code>mysql -e &quot;FLUSH PRIVILEGES;&quot;</code></pre><p id="4c42e1c1-70ef-478a-8c8d-aa53941b7eab" class=""><strong>❯ Tout simplement.</strong></p><p id="40070cad-1e5e-4527-ba36-e1468f199d36" class="">
+</p><p id="e9a7bd65-4cc0-4f69-bafe-4d377776755d" class="">Puis maintenant il ne reste plus qu’à redémarrer mysql pour que tout cela soit effectif!</p><pre id="3dbcae13-725e-4ffb-af3f-0b37e3b14a8f" class="code"><code>mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown</code></pre><p id="146e2a4c-041f-41c1-b972-2bdb062ba961" class=""><strong>❯ Je commence déjà par éteindre MySQL.</strong></p><p id="b471e697-a332-4ae5-8c8f-a2d2f394aab7" class="">
+</p><pre id="8fa2d7c1-8b4e-49e1-ae41-f7f388012dc9" class="code"><code>exec mysqld_safe</code></pre><p id="75a7a47d-f7a2-4cd1-afb6-ecb5aa6db7c3" class=""><strong>❯ Ici je lance la fameuse commande que MySQL recommande sans arrêt à son démarrage. </strong></p><p id="27ac77ad-da68-4e9e-ba95-e566fdd15113" class="">
+</p><p id="5d6d10e7-f13e-40c8-a126-e1a979f33748" class="">Mon script qui configure notre base de données est désormais fonctionnel et devrait lancer le container <strong>mariadb</strong> sans soucis.</p><p id="489f38dd-1b87-4083-a707-0f4fd9814e6e" class="">Essayons de lancer le container à l’aide d’un : <code>docker build -t mariadb</code></p><p id="dfacaa07-1eb9-4654-a86d-c5ca16073042" class="">Puis d’un <code>docker run -it mariadb</code></p><p id="38e01515-2c00-4692-a9da-4674f19b3833" class="">Si tout va bien, vous devriez avoir un petit [<mark class="highlight-teal">OK</mark>] qui indique que MySQL à été lancé sans problème, et si tout va bien, vous devriez également avoir une <em><mark class="highlight-red"><strong>erreur</strong></mark></em>!</p><p id="416a904e-e5f0-4dac-a149-cb9f15333ca9" class="">
+</p><p id="e29a1050-a779-4acc-ae34-79758db1c7f8" class="">Celle ci devrait indiquer que vous n’avez indiqué aucun mot de passe, ni d’utilisateur lors de la configuration, normal! Vous avez indiqué des variables d’environnement et celle ci seront envoyé par docker-compose, vu que vous démarrer le container seul, il ne trouve pas ces variables.</p><p id="51e29d2a-e254-4d0c-83c5-82d85e2573e7" class="">
+</p><p id="411a00a4-973e-4325-9d76-94367c8fc5f8" class="">Rien à faire, si <strong>MySQL</strong> démarre et indique au moins [<mark class="highlight-teal"><strong>OK</strong></mark>] c’est que vous avez terminé cette partie.</p><hr id="98136878-df8c-49d5-bd2f-b0a101a88cc6"/><p id="5c2473a0-b574-4733-9f9e-a6435cd454b5" class="">
+</p><h2 id="69fdcc86-1dc5-4917-846d-2aa60bfc864d" class="">5. Container WordPress :</h2><p id="da5e39bf-c968-4958-a3bf-8ca12a2e76c5" class="">
+</p><p id="cac20d2c-3233-4b38-b78a-1a8038222b3b" class="">Mettons en place <span style="border-bottom:0.05em solid"><strong>WordPress</strong></span>! </p><p id="86f7b4a0-77f9-416f-8f62-d4fbb4b8e0bc" class="">
+</p><p id="25823d48-5a43-4d7e-af8e-daad7bdcb982" class="">L’ont à de la chance, <strong>WordPress</strong> est utilisé par plus de <strong>43%</strong> des sites <span style="border-bottom:0.05em solid">dans le monde</span>, c’est leur <a href="https://wordpress.com/fr/">page d’accueil</a> qui l’indique. Par conséquent, nous devrions trouver un grand nombre de documentation à son sujet.</p><p id="d9386471-4b50-4902-b1ef-59440cb070d3" class="">
+</p><p id="f8f1a4ab-4e7c-44e0-b0a7-2920561f75c6" class="">Commençons comme d’habitude par un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> sous <em><strong>debian:buster</strong></em>.</p><p id="20b371e2-ea89-4e5f-97ef-6796c1377df6" class="">Ensuite viens le traditionnel <code>apt-get update</code> et <code>apt-get upgrade</code></p><p id="2552510e-6a49-4a16-942d-7afe8cc53679" class="">
+</p><p id="296c3a4c-d376-4669-9222-cc28cfd75c3f" class="">Pour prévoir la suite <mark class="highlight-gray">(nous aurons besoin d’installer wordpress avec son lien de téléchargement, donc en utilisant la commande wget) </mark>nous devons installer <span style="border-bottom:0.05em solid"><strong>wget</strong></span></p><p id="b2d5bae2-9c10-4dce-a78a-75c27d75f6e9" class="">
+</p><pre id="d3d01289-34e1-4a62-9bb9-d089fede92c3" class="code"><code>RUN apt-get -y install wget</code></pre><p id="96a3f817-6ecc-43a1-b85d-128dccf2f88b" class="">
+</p><p id="63515327-d686-4b5b-a62c-8e7dc3e9158a" class="">Le sujet nous l’indique, nous devons également installer <span style="border-bottom:0.05em solid"><strong>php</strong></span> avec <strong>WordPress</strong>.</p><p id="73a0a15b-f9a6-4b7c-a595-bf8d088f9bee" class="">Rappelez vous, il communiquera sur le port <strong>9000</strong> avec <strong>nginx</strong>.</p><p id="730875de-cd37-42d2-89df-84a63c7eddbf" class="">Pour cela j’utilise également <strong>apt</strong> pour installer <em><strong>php7.3</strong></em> et ces dépendances comme <em>php-fpm et php-mysql.</em></p><p id="cddcc03e-a888-4738-8cc6-fda8ea10dfcf" class="">
+</p><pre id="0ddf51f2-7180-4590-9fc3-6a7b4dc0a6ed" class="code"><code>RUN apt-get install -y php7.3\
+	php-fpm\
+	php-mysql\</code></pre><p id="52159f3a-dbc3-4160-9fc3-87601c10e1f2" class="">
+</p><p id="697ccdce-c383-4f37-b974-186b4f7c94bb" class="">Maintenant il est temps d’installer le fameux <strong>WordPress</strong> dans notre container !</p><p id="a6d383cf-ced6-4614-bee0-03121c97e7ff" class="">Nous utilisons donc <span style="border-bottom:0.05em solid"><em>wget</em></span> en indiquant le lien d’installation, moi j’ai pris la version <strong>FR 6.0</strong></p><p id="12e5e9a1-f0fb-4030-9d61-34718e060efc" class="">A vous de choisir, vous trouverez les différentes versions <a href="https://fr.wordpress.org/download/releases/">ici</a>.</p><p id="31a3996b-5782-4dee-b394-75b329462cb0" class="">
+</p><p id="5587a293-4c7d-4810-9cda-b0d9d5ab2c20" class=""><em>wget</em> possède plusieurs options, dont une qui va nous permettre d’indiquer dans quel dossier l’ont veut télécharger le fichier en utilisant -P.</p><p id="ca8fb035-d018-43de-aa31-fadd663a619b" class="">Dans quel dossier ? le <strong>/var/www</strong> évidemment!</p><p id="e0fb9548-bbbc-4578-85e9-65b957d1d63a" class="">
+</p><pre id="059cb4d1-a02a-4a32-abcf-a7232a0807a0" class="code"><code>RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www</code></pre><p id="5a5c567c-d5d4-4eef-959c-5298224d57ce" class=""><strong>❯ Très bien, top, mais maintenant il faudrait le dé-tar, enfin le décompresser quoi!</strong></p><p id="e9bb0132-82c6-407f-9286-be8c6f531a66" class="">
+</p><p id="65f45e7b-1a28-464a-99e0-2394a2d94553" class="">Allez je vous aide, allons dans le dossier <strong>/var/www </strong>et l’ont utilise <em><strong>tar -xvf</strong></em> suivi du fichier pour le décompresser et en obtenir le fameux dossier <code>wordpress</code>!</p><p id="80485089-e2f9-48c7-826c-159ceb13c38a" class="">Ensuite l’ont peut supprimer le <em>.tar</em> qui ne sert plus à rien.</p><pre id="002b4c18-6d94-4462-908c-e190ffd4b766" class="code"><code>RUN cd /var/www &amp;&amp; tar -xzf wordpress-6.0-fr_FR.tar.gz &amp;&amp; rm wordpress-6.0-fr_FR.tar.gz</code></pre><p id="d1784ad4-6b36-4851-a484-4631091c5250" class=""><strong>❯ Nous voila avec </strong><code><strong>wordpress</strong></code><strong> sous forme de dossier.</strong></p><p id="f02a9f3b-9b20-4e11-9a5b-429e61c11171" class="">
+</p><p id="c6d5c455-5aa0-404c-97a6-5034f47dcb3f" class="">Maintenant veillons à bien donner les droits à root d’écrire dans ce dossier.</p><pre id="1c5053b3-774a-4edd-a523-f44a6883ff0b" class="code"><code>RUN		chown -R root:root /var/www/wordpress</code></pre><p id="01263021-d31b-4fba-9d9c-9a612082cd75" class="">
+</p><p id="d0b6616e-04bc-47f6-a660-4d13a6d4304f" class="">Maintenant que <strong>WordPress</strong> est installé, mais pas configuré, occupons nous de <strong>php</strong>.</p><p id="403f2fd3-dbb6-4043-b743-62e9bd300fbc" class=""><strong>PHP</strong> sert à <strong>Wordpress</strong>, la plupart des fichiers de wordpress sont des .php.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6f200455-569e-4634-a81c-3fe946e5a965"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">PHP est un langage de programmation libre, principalement utilisé pour produire des pages Web dynamiques via un serveur HTTP, mais pouvant également fonctionner comme n&#x27;importe quel langage interprété de façon locale.</div></figure><p id="2e7df36f-4bc6-45b6-8e4f-aaa5265443e6" class="">
+</p><p id="578e3b73-63c5-4f85-8bbf-58e5dc123190" class="">Une fois qu’il est installé avec <strong>apt</strong>, nous pouvons modifier son fichier de configuration.</p><p id="770cb135-677b-4bc0-b480-fa9a9445723d" class="">
+</p><p id="2a4fe93b-c0b6-47ce-a6d0-d0607f9abf56" class="">Ici, j’ai pris le fichier de configuration de base et j’ai modifié seulement 2 petites choses.</p><p id="d52ea80c-db82-4f09-b5a2-21305c575ffb" class="">
+</p><p id="413ecddd-f855-45a6-94b4-3d097383282e" class="">J’ai rajouté une ligne <code>clear_env = no</code> , je pense que cette ligne est assez clair pour ne pas avoir à l’expliquer, c’est pour l’environnement, du coup.</p><p id="0d14f227-e214-4c37-ba4b-1ab531926876" class="">Mais j’ai également modifier la ligne <code>listen</code>, ici j’ai indiqué qu’il devait écouter au port de WordPress, le <strong>9000</strong>. </p><p id="3b7f6bac-3b39-4ee1-9cde-4c4c262533a3" class="">Grosso modo ca donne : <code>listen=wordpress:9000</code> </p><p id="c2496054-d05b-4c93-8ae3-8827d82c01c7" class="">
+</p><p id="8c353e25-002c-4908-a562-c5671ec5ba3a" class=""><strong>PHP</strong> est prêt, et oui, enfin après il vous faut évidemment demander au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> de copier le fichier de configuration au bon endroit dans le container, mais ça inutile de vous l’expliquer vous devriez déjà être des experts dans le domaine.</p><p id="0023f300-9663-49e5-ab4f-48a4ab74c07e" class="">
+</p><p id="b020beee-e86d-426f-b136-bf1c82b582cd" class="">
+</p><p id="f6152117-ef4c-476a-bd0d-5065cc77df2b" class="">Maintenant place à la configuration de notre ami <strong>WordPress</strong>.</p><p id="c2806b96-61cb-4e6d-878a-42d8ffd0d6dd" class=""><span style="border-bottom:0.05em solid">Quoi il faut le configurer ? 😣</span></p><p id="1a82df73-87af-4dcd-a69c-3a801b1daaec" class="">
+</p><p id="fbcec37a-de94-496a-967d-358906ae1448" class=""><strong>WordPress</strong> à besoin d’une base de données pour fonctionner, du moins connaitre son mot de passe, son nom et son host. </p><p id="b7c7deb6-87a0-4f90-81b3-26805c0fdf01" class="">Tout cela se configure dans le fichier <strong>wp-config.php</strong> <mark class="highlight-gray"><em>(un truc comme ça)</em></mark></p><p id="27b8a428-95b9-4b1f-9ff9-293c89abed53" class="">
+</p><p id="fd9ccede-2811-4bdd-9e1b-53bd9dbbbf76" class="">Mais j’ai une bonne nouvelle pour vous! Un développeur à simplement créer un <strong>CLI</strong> qui permet de configurer presque automatiquement ce genre d’informations pour vous.</p><p id="fa82d31f-fbea-40a7-b527-22a8bdcf599f" class="">Jetez un oeil à<a href="https://www.linode.com/docs/guides/how-to-install-wordpress-using-wp-cli-on-debian-10/"> ce super tuto</a>.</p><p id="796c1579-cf88-4543-8dc0-8f8c4ab80bde" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="538660a7-c611-428a-82bd-5e2569e4abba"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une CLI c&#x27;est une interface textuelle qui traite les commandes vers un programme <strong>informatique</strong>. Il existe différentes interfaces de ligne de commande, telles <strong>que </strong>DOL et Shell Bash.</div></figure><p id="e1354b41-e2b0-4062-bbbc-bd4eaacebf7c" class="">
+</p><p id="34852c21-c542-4a0e-9d3f-3c5e628acfd5" class="">Je fonce sur cette idée qui m’a l’air bien sympa, il faut déjà réutiliser <strong>wget</strong> pour installer le CLI.</p><pre id="3ff53d5a-23b3-4622-8c7f-a461243ca651" class="code"><code>RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar</code></pre><p id="82502bec-8c5d-4ca7-9314-cf2d511f0713" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="506c9ad4-17ea-486c-a002-7e3b49dc946b"><div style="font-size:1.5em"><span class="icon">🤔</span></div><div style="width:100%">Une autre possibilité aurait été de modifier directement le fichier <code>wp-config.php</code> à coup de <code>sed</code> pour rentrer les infos directement dans le fichier.</div></figure><p id="f16bac6f-b1b9-4eeb-87d7-c0d657261150" class="">
+</p><p id="d30c79d7-c65d-4ded-b0dc-02f64acf49bc" class="">Il faut ensuite lui donner les bons droits ainsi que le placer dans les binaires.</p><pre id="1235b6b7-4d69-4313-8f2c-6fc435df06ee" class="code"><code>RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-904cdf3d2b75" class="">
+</p><p id="c9bec406-7b96-496f-b0b1-45418fdf9e64" class="">Ok top! On a installer le <strong>CLI</strong> de <strong>WordPress</strong> 📄</p><p id="f799cc87-dfca-44d1-8700-834a6ffd10ee" class="">Maintenant il faudrait l’utiliser, pour cela l’ont va faire comme avec <strong>MariaDB</strong>, créer un petit script bash qu’on copiera et qui effectuera les commandes à notre place au lancement du container. </p><p id="f1349181-d382-4162-b90f-71e4420363b5" class="">
+</p><p id="a79d4503-29eb-4773-82df-53f2ebf0640a" class="">Je crée donc un <code>auto_config.sh</code> que je place dans le dossier <code><strong>conf</strong></code> de <strong>WordPress</strong>.</p><p id="56050544-c488-4244-85f9-7d435a003c90" class="">
+</p><p id="31e534c0-ea17-4088-a7b4-e147486f3dcd" class="">Dans celui ci, je vais, par précaution mettre un <code>sleep 10</code> afin d’être certain que la base de données <strong>mariadb</strong> à bien eu le temps de se lancer correctement.</p><p id="490585e7-65f4-4691-9ee7-924c3e5ee944" class="">Ensuite, et uniquement si notre fichier <code>wp-config.php</code> n’existe pas <mark class="highlight-gray">(nous ne voudrions pas </mark><mark class="highlight-gray"><em>reconfigurer</em></mark><mark class="highlight-gray"> </mark><mark class="highlight-gray"><strong>WordPress</strong></mark><mark class="highlight-gray"> à chaque lancement non?)</mark> , nous utilisons la commande <code>wp config create</code> du <span style="border-bottom:0.05em solid"><strong>CLI</strong></span> pour indiquer les informations dont <strong>WordPress</strong> à besoin.</p><p id="959d2335-64c9-4647-8070-b9b519d66a47" class="">
+</p><p id="5653fb13-0d8f-4b3b-a512-aad7d47b584c" class="">Nous pourrions remplir ces informations à la main directement en accédant à <a href="http://localhost">localhost</a> en lançant notre container. </p><p id="2766905f-8fac-49a2-babd-21f61b770ab2" class="">Cela ressemblerait à cela :</p><figure id="fb60048a-27db-43ac-80b2-9aba21562209" class="image"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/configuration.png"><img style="width:674px" src="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/configuration.png"/></a></figure><p id="c0d084ae-e3eb-4b33-89a2-c696cbd2868a" class=""><strong>❯ Ceci est la première page que présente WordPress à son lancement.</strong></p><p id="654db5cb-7b98-4b31-a48e-68c994389167" class="">
+</p><p id="509499df-7b80-4feb-91f6-59055467522b" class="">Sauf que nous, nous voudrions que cela soit déjà automatiquement configuré.</p><p id="e932856a-a08d-4ea3-a615-717453930881" class="">Nous pouvons donc indiquer ces infos avec l’aide de <code>wp config create</code> du <span style="border-bottom:0.05em solid">CLI</span>.</p><p id="1c414a5c-4ad8-4808-8d08-3016122f9c99" class="">
+</p><p id="bdb1f8d2-5853-4663-852c-14dbfdf48951" class="">Cela donnerait quelque chose comme ça :</p><pre id="4eb1d114-c023-4ce8-b910-3e0ac58bacd9" class="code"><code>wp config create	--allow-root \
+    					--dbname=$SQL_DATABASE \
+    					--dbuser=$SQL_USER \
+    					--dbpass=$SQL_PASSWORD \
+    					--dbhost=mariadb:3306 --path=&#x27;/var/www/wordpress&#x27;</code></pre><p id="30e68cf5-0f6c-4b38-aad4-8a46582077c7" class=""><strong>❯ À indiquer directement après notre sleep dans notre fichier auto_config.sh</strong></p><p id="0169a57c-66ba-4d47-a197-6dd602174285" class="">
+</p><p id="d1f9d257-5a2f-463d-96a9-3a2d6a2b6a18" class="">Maintenant si nous lançons le container <strong>WordPress</strong>, ça ne devrait plus être la page que je vous ai montré juste au dessus mais la deuxième, celle ci est bien plus sympa.</p><figure id="93111a2b-91db-4316-bfc9-fca412bc51b5" class="image"><a href="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/install-step5_v47.png"><img style="width:795px" src="42%20Inception%20TIPS%205bbaa417a995492aa009aff39f1bfb78/install-step5_v47.png"/></a></figure><p id="71ea0a1b-aaa3-4c41-b08c-667a1e57c359" class="">
+</p><p id="a4423731-ac4a-4245-ae62-29b30d17fedd" class="">C’est la page qui demande de choisir un <strong>titre</strong> pour votre site, ainsi qu’un <strong>nom d’utilisateur</strong> et un <strong>mot de passe</strong>, mais la impossible d’avoir faux car <span style="border-bottom:0.05em solid">c’est à vous de le choisir</span> 😎</p><p id="5720bac1-2084-447c-b227-1b9a5d99d967" class="">Pour moi, il serait normal de laisser cette page de configuration à remplir, mais il me semble que le sujet demande qu’elle soit également automatiquement configuré, car celui ci demande qu’il y ai 2 utilisateurs <strong>WordPress</strong>, et c’est sur cette page qu’on peut configurer le premier.</p><p id="76c564d1-9f46-425a-b983-65fcd332f9ef" class="">
+</p><p id="d5739510-0c5c-48e2-814e-2540c50561c8" class="">Je vous laisse regarder la doc du <strong>CLI</strong> mais celui ci propose de configurer cette deuxième page automatiquement avec la commande <code>wp core install</code> et même d’ajouter un autre utilisateur avec la commande <code>wp user create</code> . Franchement je vous laisse la partie la plus simple.</p><p id="9dba471c-2447-438a-b402-9c0def259177" class="">
+</p><p id="1290b96f-ced6-4b97-ac77-94ee9b31c017" class="">Plus qu’à copier le fichier <code>auto_config.sh</code> dans votre container et l’exécuter avec le mot clef <mark class="highlight-blue"><strong>ENTRYPOINT.</strong></mark></p><p id="0080e534-427b-4a3d-92f5-9385fe7efe84" class="">
+</p><p id="16d4522b-d16a-440c-85e9-3c91cd2ce409" class="">Ensuite pour éviter une erreur qui concerne le <strong>php</strong>, j’ai rajouté une condition qui crée le dossier <code>/run/php</code> s’il n’existe pas.</p><p id="3fb2be81-accd-48aa-9682-58a4c50add84" class="">
+</p><p id="1b54d6b6-ba9b-4662-9abf-21c111cdf3d9" class="">Ensuite je lance <strong>php-fpm</strong> avec la commande :</p><pre id="5403cf33-4067-45de-acdd-7c6f3b263937" class="code"><code>/usr/sbin/php-fpm7.3 -F</code></pre><p id="17adf571-0a29-4596-86e9-90b685063319" class="">
+</p><p id="c2a01a08-23b3-4239-af9a-06893c82e3b9" class="">
+</p><p id="3b601315-b7f3-4dd6-90ca-427c36654bc5" class="">Vous avez <span style="border-bottom:0.05em solid">terminé</span> la configuration de votre container <strong>WordPress</strong>!</p><p id="95b26f1d-6e9b-4ecf-ad8f-8cc0b56f357d" class="">
+</p><p id="e2fcabc8-c9a6-4097-a5b4-7969280b9db5" class="">
+</p><h1 id="3d58a5fe-1036-4ce0-aabb-77a86e84bed7" class="">6. Relier les containers avec Compose:</h1><h2 id="51a0e7a0-e19e-4ff7-b40a-41f4cadf0fc3" class="">Place au fameux <span style="border-bottom:0.05em solid">docker-compose.yml</span> !</h2><p id="426d092d-b7d8-4819-a215-5e70026b2513" class="">
+</p><p id="ea0d5339-3bf3-4e83-9216-1cea7e548975" class="">Bon, d’abord renseignez vous sur comment s’écrit un fichier <strong>docker-compose</strong>.</p><p id="109eff6c-05d2-48d8-8ea1-2309552de849" class="">Celui ci commence toujours par la version de docker-compose, la dernière, la 3.</p><p id="7db682ec-774e-4c80-8127-f8220015e10b" class="">
+</p><p id="6d6cef25-be20-449e-ac7b-58f9b63286e2" class="">La première ligne sera donc : <code>version: ‘3’</code></p><p id="cd74e6f2-5c19-4e3e-9917-7dc1f5ca1e26" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="dfb5361f-61ea-44a5-9e5d-561dc05387d3"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%">Attention à l’indentation du <strong>docker-compose.yml</strong> ! Comme pour Python, c’est l’indentation qui compte.</div></figure><p id="a2c61d3e-b52d-4d1f-9ad1-e72bbc47177d" class="">
+</p><p id="2ced7fbc-0e07-40a5-990a-d5a2fa652510" class="">Ensuite l’ont indique la ligne <code>services:</code></p><p id="70e52c21-e058-47a8-9872-39a7603df9d2" class="">Et là, avec une indentation de 1 <strong>tab</strong> l’ont peut énumérer nos différents services.</p><p id="5367f9d4-d179-4dad-9a6b-fb6320b215c7" class="">Je commence par <strong>MariaDB :</strong></p><p id="e1247c46-9896-473e-a13a-a7609f621145" class="">
+</p><pre id="50e2eeeb-c165-421b-9ed3-3e76dc82db02" class="code"><code>mariadb:
+    container_name: mariadb   # Le nom du container, oui vraiment.
+    networks:
+      - inception             # à quel network il appartient
+    build: 
+      context: requirements/mariadb # ou se trouve son Dockerfile
+      dockerfile: Dockerfile        # le nom du Dockerfile ?!
+    env_file: .env                  # le fichier d&#x27;environnement pour transmettre les variables
+    volumes:                        # Voir plus bas
+      - mariadb:/var/lib/mysql
+    restart: unless-stopped          # redémarre tant qu&#x27;il n&#x27;est pas stoppé 
+    expose:                          # le port à exposer
+      - &quot;3306&quot;</code></pre><p id="4244193a-7972-4d11-bb9a-44c5a5fb0b30" class=""><strong>❯ Et voilà ! (J’aurais aimé qu’on fasse le taff de lire la doc à ma place moi)</strong></p><p id="417d4d74-12b1-434a-9e1e-cc6dd43f328d" class="">
+</p><h1 id="1cc3e8e7-3014-409a-98a3-f459ca626f88" class="">7. Les volumes à configurer:</h1><h3 id="2f3aba2b-f359-4a44-8751-927cc73ebabd" class="">Parlons rapidement de la ligne <span style="border-bottom:0.05em solid">Volumes</span>:</h3><p id="fc053ded-51ab-4687-8842-87ab9ede0455" class="">
+</p><p id="3c6abda8-1123-4262-8c29-711f8ac9d3cb" class="">Nous assignons un <span style="border-bottom:0.05em solid">volume</span> à <strong>MariaDB</strong>, comme nous allons le faire avec <strong>WordPress</strong>.</p><p id="261506ae-8d8d-41c4-a800-649c640aa5fb" class="">C’est un <em>prérequis</em> du sujet. Nous devons permettre la <span style="border-bottom:0.05em solid">persistance des données</span>, pour cela nous allons stocker certaines dossiers directement sur notre ordinateur en local.</p><blockquote id="a61ae461-9f5d-4202-9b84-95e4bfa066f2" class="">Et oui, imaginez que votre container <strong>wordpress</strong> <strong><mark class="highlight-red">crash ou s’éteint</mark></strong>, et que par pur hasard, celui ci à perdu tout vos fichiers, ce serait bien embêtant, c’est pour cela que nous préférerons les stocker directement en local, et docker-compose nous le permet.</blockquote><p id="ffb59fa5-66ab-45ef-8cdb-81c87312e4aa" class="">
+</p><p id="269c87f4-fc43-4229-834b-34f5f1ba3d71" class=""><mark class="highlight-yellow_background">Dans le cas d’Inception, nous allons stocker les dossiers de </mark><strong><mark class="highlight-yellow_background">mysql</mark></strong><mark class="highlight-yellow_background">, se trouvant dans </mark><code><mark class="highlight-yellow_background">/var/lib/mysql </mark></code><mark class="highlight-yellow_background">et wordpress à </mark><code><mark class="highlight-yellow_background">var/www/wordpress</mark></code><mark class="highlight-yellow_background">. Ceux sont les </mark><strong><mark class="highlight-yellow_background">paths</mark></strong><mark class="highlight-yellow_background"> que j’indique après la ligne </mark><em><mark class="highlight-yellow_background">volume</mark></em><mark class="highlight-yellow_background">. Encore une fois c’est le sujet qui nous le demande.</mark></p><p id="7d122de1-e3b7-47f2-8db1-118b6da56f3f" class="">
+</p><p id="6b6d2552-1feb-4937-9f58-b360e3a00751" class="">Ici à la ligne volume nous indiquons <strong>MariaDB</strong> <em><mark class="highlight-gray">(c’est le nom du volume, nous aurions pu l’appeler vol_maria ou autres, évidemment il fera intervenir une ligne concernant les volumes dans le </mark></em><em><strong><mark class="highlight-gray">docker-compose.yml</mark></strong></em><em><mark class="highlight-gray"> qui permettra d’indiquer où le stocker en local) </mark></em></p><p id="fdd98454-6b37-49cd-b10b-845db2177bdd" class="">suivi de <code>:</code> avec l’endroit que nous souhaitons copier du container.</p><p id="4b496a48-aca0-4611-9103-7884045783cb" class="">
+</p><p id="6100dc7e-e6e6-4446-9194-436230f3984a" class="">
+</p><p id="8a83ccac-a0e0-4684-8419-e4206126fba5" class="">Continuons à écrire notre<strong> docker-compose</strong>.</p><p id="01817814-674a-442a-8d4d-f44ccc79b5cd" class="">Place au service <strong>Nginx</strong>, ici c’est le même principe, sauf deux choses qui changent et les <strong><em>noms/paths</em></strong> évidemment.</p><p id="79c69731-a94e-491f-b563-d7efc6b32789" class="">
+</p><pre id="f2876a0c-3fc3-4fff-bcf2-f4050f54be60" class="code"><code>nginx:
+    container_name: nginx
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - inception
+    depends_on:         # Nouvelle ligne, indiquant de ne pas démarrer nginx tant que WordPress n&#x27;a pas démarrer.
+      - wordpress
+    build: 
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - &quot;443:443&quot; # on indique le port qui sera exposé a la machine local
+    restart: on-failure # Ici nous changeons, le container redémarrera uniquement en cas de crash.</code></pre><p id="f9666c6f-65b6-49a0-9f19-a2d6e541c673" class="">C’est bon, vous l’avez ? Faisons de même pour <strong>WordPress</strong>.</p><p id="d65ff5e0-67c9-43cf-9ac5-76adcbd35acb" class="">
+</p><pre id="bd551c4a-bfc6-4a9a-9da8-71fb2e8214e1" class="code"><code>wordpress:
+    container_name: wordpress
+    env_file: .env
+    volumes:
+    - wordpress:/var/www/wordpress:nocopy
+    networks:
+      - inception
+    build: 
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    depends_on:    # WordPress démarrera uniquement après MariaDB (sinon il ne pourra pas configurer la base de données...)
+      - mariadb
+    restart: on-failure
+    expose: 
+      - &quot;9000&quot;</code></pre><p id="fb0c02bd-72a0-43b9-8f78-b1428958a8b0" class="">
+</p><p id="dfcc339c-2157-4db5-9338-882fe602310e" class="">Top! Nous avons <span style="border-bottom:0.05em solid">presque</span> terminé.</p><p id="bf624429-8790-469a-9842-805ac6df6347" class="">
+</p><p id="d7be0a7d-35e6-4c8d-a919-a04e6b8b4fb0" class="">Il ne manque plus qu’à préciser les volumes que nous avons indiqués :</p><pre id="150e6453-ead2-4f7e-a295-01b98c6324d0" class="code"><code>volumes:
+  wordpress:
+    driver: local # ici nous stockons le volume en local
+    driver_opts:
+      type: &#x27;none&#x27; # aucun type spécifique
+      o: &#x27;bind
+      device: &#x27;/Users/jcluzet/data/wordpress&#x27; #Ou stocker le dossier sur votre ordinateur en local
+  mariadb:
+    driver: local
+    driver_opts:
+      type: &#x27;none&#x27; 
+      o: &#x27;bind&#x27;                             # Les Bind Mounts sont des volumes qui se montent sur un chemin d&#x27;accès à l&#x27;hôte, et ils peuvent être modifiés par d&#x27;autres processus en dehors de docker.
+      device: &#x27;/Users/jcluzet/data/mariadb&#x27; #Ou stocker le dossier sur votre ordinateur en local</code></pre><p id="159fbb1a-0e70-4c36-a4df-27c9ad14f3d4" class=""><strong>❯ </strong><a href="https://docs.docker.com/compose/compose-file/compose-file-v3/"><strong>Cette doc</strong></a><strong> de docker explique bien comment gérer les volumes dans un docker-compose.</strong></p><p id="db1f0cad-51d1-43ca-8a48-179711d4dafb" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="222850bf-983e-44a4-95f4-9ba95d26fe91"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Vos volumes seront disponibles dans le dossier /home/login/data de la
+machine hôte utilisant Docker.</div></figure><p id="9940b5dc-0ce3-4995-b474-78e3a64a7040" class=""><strong>❯ Pensez donc à modifier le path de la ligne device: en conséquence.</strong></p><p id="93486a86-0aec-4ad1-adf5-82a01c77b49f" class="">
+</p><p id="308f42dd-c10e-4558-a924-9125f71a3eda" class="">Reste plus qu’à créer la partie network, attention, c’est très simple.</p><pre id="7aea0220-53f2-4563-8872-e21d017b52b9" class="code"><code>networks:
+    inception:
+      driver: bridge</code></pre><p id="6f4a0766-d0c2-4e34-b78c-e47730a0dc41" class=""><strong>❯ Oui c’est tout.</strong></p><p id="27cc4f93-588e-4946-84a8-b365be37c754" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29a2ba2e-b28d-409f-bbe1-c5d9671d4465"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ici <code>bridge</code> indique a Docker d’installer automatiquement des règles qui permettront aux 3 containers de communiquer en bridge.</div></figure><p id="389d58b5-0191-465f-84e9-a323b3201585" class="">
+</p><p id="7f5daf03-75c8-4a4f-88d2-f29beef8412f" class="">Votre fichier <strong>docker-compose.yml</strong> est prêt! J’espère que vous n’avez pas été jusqu’à recopier les <strong>paths</strong> sans les modifier, ce serait dommage 🤪</p><p id="466dd91d-d37c-46c6-a9e3-13b59796f16f" class="">
+</p><p id="2ec29656-d4b2-4ba8-a375-0cbeeded9d49" class="">Ah j’ai failli oublier ! Vous pouvez <strong>build</strong> votre fichier <mark class="highlight-yellow"><strong>.yaml</strong></mark> avec la commande </p><p id="1bb0ca05-eb11-4d3d-ba77-963d4defd4cf" class=""><code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> -d —build</code></p><p id="b261a003-c466-4adc-abf6-c43d5d4e1153" class="">
+</p><p id="24dfbb6b-1eb5-4dfc-8804-2bbc8953189f" class="">Pour l’<strong>arrêter</strong> : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> stop</code></p><p id="cb32153d-0413-4748-a5b2-f243ab7b6414" class="">Pour <strong>supprimer</strong> le build : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> down -v</code></p><p id="8b9ca413-98b6-4a1a-8052-78df52dd55a6" class="">
+</p><p id="4faf8b92-28eb-46b4-82fc-9137974c2493" class="">Si vous rencontrez des problèmes avec docker vous pouvez utiliser la commande :</p><p id="5b8a5f35-c882-4c6c-a622-6a3b13b0cf83" class=""><code>docker system prune -af </code> <mark class="highlight-yellow_background">Attention, ça supprime tout les container, images, etc.</mark></p><p id="db2527db-5e9a-46ba-9652-a723392997a4" class="">
+</p><hr id="5139a8bc-0047-414e-bc69-b55a3b30339f"/><p id="95e24c9c-561b-47bf-8d05-c2da7dea4c0a" class="">
+</p><h1 id="4dc58c8c-9186-4add-876f-9106e909e568" class="">8. Finaliser le projet :</h1><h3 id="6e711da4-6b93-4e49-96bd-de36246737dd" class="">Petites rectifications:</h3><p id="17596f33-9491-4b67-b81f-06e7f47da2b6" class="">
+</p><p id="03d868e9-3eb5-4602-bd8e-b5d05d858de7" class="">Depuis que j’ai testé tout cela, j’ai remarqué quelques petits bugs, j’ai donc rajouté quelques petites précisions au fichier de configuration de <strong>nginx</strong>.</p><p id="e24b1942-d8af-4047-b617-0aebf651479c" class="">
+</p><p id="5e3c97ca-6398-404f-a0da-013128f01cce" class="">J’ai rajouté en première ligne le mot clef <code>events {}</code> car <strong>nginx</strong> le demandait avec une erreur du type <code>missing events{}</code>.</p><p id="89cd7042-4228-4b23-bd1b-3f1ef15bc283" class="">
+</p><p id="98562136-656c-4228-af68-9b94e739abf5" class="">J’ai également rajouté la ligne <code>include /etc/nginx/mime.types;</code> juste en dessous du mot clef <strong>http</strong>.</p><p id="6a18c182-6931-4c80-9405-c589e229d0f9" class="">Pourquoi? Le CSS ne chargeait pas,c x et après une longue enquête j’ai remarqué que ceux-ci était indiqué avec un Content-Type <strong>html</strong>?! </p><p id="86086555-8b5f-4572-b95f-0935ae967b0e" class="">Après de longues visites sur le site de <span style="border-bottom:0.05em solid">StackOverFlow</span> j’ai finalement rajouté cette ligne qui précise les <strong>content-types</strong>, et tout est rentré dans l’ordre!</p><p id="1eed249e-c8db-4666-a2d7-b75d41018070" class="">
+</p><p id="7a1ea36c-407e-4311-9de1-5e5ea1a5b2a4" class="">A prioris, il ne vous reste plus qu’à faire un Makefile et <span style="border-bottom:0.05em solid"><strong>vous êtes bon</strong></span><strong> 🤩</strong></p><p id="341740d8-6933-4877-ae75-aa6ff8245bc3" class="">Ah oui, moi j’ai aussi rajouté un mini script bash qui configure automatiquement les bon path dans docker-compose.yml, toujours sympa quand un ami veut tester le projet sur son ordinateur, il n’à pas à chercher chaque path dans tout les fichiers.</p><p id="af566dbd-9c47-4e9f-b884-b3935eb23dcb" class="">
+</p><hr id="56ad1840-931b-4f11-ad2d-2639392025a6"/><p id="3c81fa32-87a4-4f5f-8bb7-5be92b3ff50c" class="">
+</p><p id="077bb3e8-d681-4a70-8b13-c632b9f1b625" class="">Si vous tentez de vous connecter à <a href="http://localhost">localhost</a> ou 127.0.0.1 depuis votre navigateur <em><mark class="highlight-gray">(après avoir lancé votre container évidemment) </mark></em>vous ne verrez surement rien apparaitre, normal nous n’avons ouvert que le port <strong>443</strong> comme port d’écoute. </p><p id="6047e212-485c-4b12-bc57-9068a296a45f" class="">
+</p><p id="085c4afa-5e3c-427d-80a5-4746580934e2" class="">Le port <strong>443</strong> correspondant au port <strong>SSL</strong> nous devons donc nous y connecter en utilisant <code>https://</code>et non <code>http://</code>, car ce dernier nous emmènerait sur le port standard <strong>80</strong>, que nous aurions surement configurer sur un site classique, et celui si redirigerait vers le 443. Mais ici le sujet <mark class="highlight-red"><strong>interdit</strong></mark> l’ouverture d’un autre port que le <strong>443</strong>.</p><p id="0265a99a-c56f-4e4b-80f8-ecad305037dc" class="">
+</p><p id="c9fde834-3524-4f34-8f52-b6d783591f27" class="">Maintenant, nouveau soucis, selon votre navigateur, celui si devrait afficher un message <strong>d’alerte </strong>indiquant que ce site <mark class="highlight-yellow_background">tente surement de vous </mark><span style="border-bottom:0.05em solid"><mark class="highlight-yellow_background">voler des informations sensibles</mark></span>.</p><p id="febadbac-8adf-4f13-a06b-27ebe43c14e6" class="">Dans le language d’un <strong>dev</strong>, cela veut dire que le certificat <strong>SSL</strong> n’a pas été signé par <mark class="highlight-yellow"><strong>Trusted Authority</strong></mark>. Nous ne pouvons rien y faire quand il s’agit d’un projet en local et encore moins avec un certificat généré par <strong>OpenSSL</strong>.</p><p id="566dd054-6465-4dc6-8974-51c7e8f28413" class="">Cependant nous pouvons tout de même rentrer sur le site, pour Safari il existe un bouton qui demande tout de même l’accès au site, et sur Chrome il existe un petit secret, c’est de taper le mot <code>thisisunsafe</code> quand vous êtes sur la page d’alerte.</p><p id="40c662d0-8594-4774-a482-d28a8bf43133" class="">Et voilà, vous devriez arriver sur votre site.</p><p id="44c9c917-cddc-4fcc-b9e1-13f50250d3a4" class="">
+</p><p id="01f28f7b-3613-4905-a9a4-aaf75faedb7e" class="">
+</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="316f2244-e89a-43c6-8f9f-d23d5e69cde6"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer votre nom de domaine afin qu’il pointe vers votre adresse IP locale.
+Ce nom de domaine sera <a href="http://login.42.fr/">login.42.fr</a>. A nouveau, vous utiliserez votre login</div></figure><p id="e362fdfc-6746-465f-9ee7-6b6bfc7fc33e" class=""><strong>❯ Ici il s’agit uniquement d’une configuration à effectuer sur votre machine en local. </strong></p><p id="4ba41374-294d-45b3-86be-9098a6a6a448" class="">En gros vous pouvez déjà accéder au site depuis localhost, qui <em>(ce mot)</em> redirige en fait sur l’IP <strong>127.0.0.1</strong>, sans vous le dire, mais tout cela est en fait écrit dans un fichier de votre ordinateur. </p><blockquote id="d98556a2-3ebb-43f3-984c-10cf4f830796" class="">Ce fichier est très sensible et il vous faudra l’éditer avec un <code>sudo</code>, en effet c’est  un fichier très visé par les hackers, il permettrait de vous rediriger facilement sur un faux google quand vous tapez <a href="http://google.fr">google.fr</a>, par exemple.</blockquote><p id="e41f70a8-3ed1-438f-ad16-f37e6595c002" class="">
+</p><p id="c4913049-0822-40b9-b08c-81fab5db61c6" class="">En éditant ce fichier qui se trouve généralement ici : <code>/etc/hosts</code> vous pourrez facilement demander la redirection de <strong>127.0.0.1</strong> sur l’IP que vous voudrez, comme <strong>login.42.fr</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7b6bfa8-36d8-43e4-a374-07fbcc16d19a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">N’oubliez pas de modifier cet IP dans le fichier de conf de nginx dans la case <code>server_name</code> , le mieux serait de le faire aussi dans la génération du certificat SSL, mais bon, vu que de toute manière celui ci n’est pas authentifié..</div></figure><p id="c160eb00-7470-4ad1-b328-82cf78e17d50" class="">
+</p><p id="c9e7f6ec-2878-4598-9a18-809a849606ac" class="">À prioris vous respectez maintenant toutes les règles du sujet. </p><p id="4e2e27eb-57c9-4fc0-9d85-9fdfc6d76840" class="">Bon courage pour la correction! 🔎</p></div></article></body></html>
