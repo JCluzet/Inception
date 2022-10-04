@@ -4,6 +4,7 @@ version: '3'
 
 services:
   mariadb:
+    image: mariadb
     container_name: mariadb
     volumes: 
       - mariadb:/var/lib/mysql
@@ -20,6 +21,7 @@ services:
 
 
   nginx:           # with TLSv.1.2
+    iamge: nginx
     container_name: nginx # name of the container
     volumes:
       - wordpress:/var/www/wordpress
@@ -36,6 +38,7 @@ services:
     restart: on-failure
 
   wordpress:
+    image: wordpress
     container_name: wordpress
     env_file: .env
     volumes:
