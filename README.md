@@ -3,6 +3,8 @@ Inception is a 42 project consists in recreating an enterprise infrastructure us
 
 *Ce tutoriel à été créée sur Notion, la syntaxe est différente en attente d'être adapté.
 
+https://www.notion.so/42-Inception-TIPS-82a4111e431e44159d38249da9eab87c
+
 # Objectif d’apprentissage
 
 1. Comprendre **Docker** et **Compose**.
