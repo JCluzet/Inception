@@ -21,7 +21,7 @@ services:
 
 
   nginx:           # with TLSv.1.2
-    iamge: nginx
+    image: nginx
     container_name: nginx # name of the container
     volumes:
       - wordpress:/var/www/wordpress
